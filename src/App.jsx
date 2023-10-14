@@ -1,9 +1,17 @@
-import "./App.css";
+import { Link, Route, Routes } from "react-router-dom";
+import { Login } from "./pages/Login";
+import { Signup } from "./pages/Signup";
 
 function App() {
 	return (
 		<div>
-			<h1>GROOB</h1>
+			<Link to="/signup">Signup</Link>
+			<br />
+			<Link to="/login">Log in</Link>
+			<Routes>
+				<Route path="/login" element={<Login />} />
+				<Route path="/signup" element={<Signup />} />
+			</Routes>
 		</div>
 	);
 }
