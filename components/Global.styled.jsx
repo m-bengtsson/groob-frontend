@@ -15,7 +15,7 @@ a {
   }
 
   &:visited{
-    color: inherit
+    color: inherit;
   }
 }
 `;
