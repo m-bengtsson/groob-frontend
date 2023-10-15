@@ -12,9 +12,6 @@ function App() {
 			<Link to="/signup">
 				<StyledButton>Signup</StyledButton>
 			</Link>
-
-			<br />
-
 			<Link to="/login">
 				<LargeButton>Log in</LargeButton>
 			</Link>
