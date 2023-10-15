@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { Login } from "./pages/Login";
-import { Signup } from "./pages/Signup";
+import { SignupPage } from "./pages/SignupPage";
 import { StyledButton, LargeButton } from "./styles/Button.styled";
 import { GlobalStyle } from "./styles/Global.styled";
 
@@ -18,7 +18,7 @@ function App() {
 
 			<Routes>
 				<Route path="/login" element={<Login />} />
-				<Route path="/signup" element={<Signup />} />
+				<Route path="/signup" element={<SignupPage />} />
 			</Routes>
 		</div>
 	);
