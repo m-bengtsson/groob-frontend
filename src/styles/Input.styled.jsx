@@ -6,10 +6,9 @@ export const StyledInput = styled.input`
 	width: 200px;
 	height: 40px;
 	padding: 0 0.5em;
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: 700;
 	box-shadow: inset 0 1px 2px #949494;
-	margin: 10px;
 
 	&:active {
 		border: none;
@@ -18,4 +17,11 @@ export const StyledInput = styled.input`
 	&::placeholder {
 		color: #949494;
 	}
+`;
+
+export const StyledInputLabel = styled.label`
+	font-weight: 700;
+	display: flex;
+	flex-direction: column;
+	margin: 0.5em 0;
 `;
