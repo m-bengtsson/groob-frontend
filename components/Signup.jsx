@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { LargeButton } from "../src/styles/Button.styled";
 import { StyledLoginSignupWrapper } from "../src/styles/Container.styled";
 import { StyledInput, StyledInputLabel } from "../src/styles/Input.styled";
@@ -6,11 +7,6 @@ export const Signup = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const { email, password, rePassword } = e.target;
-
-		//Check if password and rePassword is the same, here or in backend?
-		//fetch /signup with credentials
-		//redirect
-		//error handling
 
 		console.log(
 			"EMAIL, PASSWORD, REPASSWORD",
@@ -25,12 +21,12 @@ export const Signup = () => {
 			<form onSubmit={handleSubmit}>
 				<StyledLoginSignupWrapper>
 					<StyledInputLabel>
-						Email
+						<p>Email</p>
 						<StyledInput name="email" type="email" placeholder="Email" />
 					</StyledInputLabel>
 
 					<StyledInputLabel>
-						Password
+						<p>Password</p>
 						<StyledInput
 							name="password"
 							type="password"
@@ -39,16 +35,18 @@ export const Signup = () => {
 					</StyledInputLabel>
 
 					<StyledInputLabel>
-						Repeat Password
+						<p>Repeat Password</p>
 						<StyledInput
 							name="rePassword"
 							type="password"
 							placeholder="Password"
 						/>
 					</StyledInputLabel>
-
 					<p>
-						Already have an account? <b>Log in here.</b>
+						Already have an account?{" "}
+						<Link to="/login">
+							<b>Log in here.</b>
+						</Link>
 					</p>
 
 					<LargeButton type="submit">Sign in</LargeButton>
