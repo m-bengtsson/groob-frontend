@@ -1,9 +1,12 @@
 import { Signup } from "../components/Signup";
+import photo from "../assets/square-large-photo.jpg";
+import { AuthPhotoWrapper } from "../styles/Container.styled";
 
 export const SignupPage = () => {
 	return (
-		<div>
+		<AuthPhotoWrapper>
+			<img src={photo} />
 			<Signup />
-		</div>
+		</AuthPhotoWrapper>
 	);
 };

@@ -17,9 +17,9 @@ export const Signup = () => {
 	};
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<StyledLoginSignupWrapper>
+		<StyledLoginSignupWrapper>
+			<div>
+				<form onSubmit={handleSubmit}>
 					<StyledInputLabel>
 						<p>Email</p>
 						<StyledInput name="email" type="email" placeholder="Email" />
@@ -50,8 +50,8 @@ export const Signup = () => {
 					</p>
 
 					<LargeButton type="submit">Sign in</LargeButton>
-				</StyledLoginSignupWrapper>
-			</form>
-		</div>
+				</form>
+			</div>
+		</StyledLoginSignupWrapper>
 	);
 };
