@@ -10,7 +10,7 @@ export const StyledNavbar = styled.div`
    padding: 1em;
 
     div{
-      gap: 1em;
+      gap: 1.5em;
     }
 `;
 

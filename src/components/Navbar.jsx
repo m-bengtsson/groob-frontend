@@ -1,5 +1,6 @@
 import { View } from "../styles/Global.styled";
 import { StyledNavbar, Logo } from "../styles/Navbar.styled";
+import NavIcons from "./NavIcons";
 
 const Navbar = () => {
 	return (
@@ -10,9 +11,7 @@ const Navbar = () => {
             <p>Men</p>
             <p>Accessories</p>
          </View>
-         <View>
-            <p>icons</p>
-         </View>
+         <NavIcons />
 		</StyledNavbar>
 	);
 }
