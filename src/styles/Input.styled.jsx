@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledInput = styled.input`
 	background-color: #f8f4f4;
 	border: none;
-	width: 200px;
+	width: 300px;
 	height: 40px;
 	padding: 0 0.5em;
 	font-size: 16px;
