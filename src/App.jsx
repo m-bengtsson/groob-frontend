@@ -3,12 +3,13 @@ import { LoginPage } from "./pages/LoginPage";
 import { SignupPage } from "./pages/SignupPage";
 import { StyledButton, LargeButton } from "./styles/Button.styled";
 import { GlobalStyle } from "./styles/Global.styled";
+import Navbar from "./components/Navbar";
 
 function App() {
 	return (
 		<div>
 			<GlobalStyle />
-
+         <Navbar />
 			<Link to="/signup">
 				<StyledButton>Signup</StyledButton>
 			</Link>

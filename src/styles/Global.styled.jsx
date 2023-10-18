@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
+
 
 export const GlobalStyle = createGlobalStyle`
 *{
@@ -22,3 +24,7 @@ a {
 }
 
 `;
+
+export const View = styled.div`
+   display: flex;
+`
