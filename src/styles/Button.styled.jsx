@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-	margin: 0.5em;
+	margin: 0.5em 0;
 	padding: 0.5em 1em;
 	background-color: black;
 	color: white;
@@ -12,6 +12,6 @@ export const StyledButton = styled.button`
 `;
 
 export const LargeButton = styled(StyledButton)`
-	width: 200px;
+	width: 300px;
 	height: 40px;
 `;

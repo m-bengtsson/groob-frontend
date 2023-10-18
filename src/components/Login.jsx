@@ -12,9 +12,9 @@ export const Login = () => {
 	};
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<StyledLoginSignupWrapper>
+		<StyledLoginSignupWrapper>
+			<div>
+				<form onSubmit={handleSubmit}>
 					<StyledInputLabel>
 						<p>Email</p>
 						<StyledInput name="email" type="email" placeholder="Email" />
@@ -29,15 +29,15 @@ export const Login = () => {
 						/>
 					</StyledInputLabel>
 					<p>
-						Don`t have an account?{" "}
+						Don`t have an account?
 						<Link to="/Signup">
 							<b>Sign up here.</b>
 						</Link>
 					</p>
 
 					<LargeButton type="submit">Log in</LargeButton>
-				</StyledLoginSignupWrapper>
-			</form>
-		</div>
+				</form>
+			</div>
+		</StyledLoginSignupWrapper>
 	);
 };
