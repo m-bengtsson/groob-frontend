@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { LargeButton } from "../src/styles/Button.styled";
-import { StyledLoginSignupWrapper } from "../src/styles/Container.styled";
-import { StyledInput, StyledInputLabel } from "../src/styles/Input.styled";
+import { LargeButton } from "../styles/Button.styled";
+import { StyledLoginSignupWrapper } from "../styles/Container.styled";
+import { StyledInput, StyledInputLabel } from "../styles/Input.styled";
 
 export const Signup = () => {
 	const handleSubmit = (e) => {
