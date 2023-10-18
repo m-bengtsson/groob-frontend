@@ -1,7 +1,6 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage";
 import { SignupPage } from "./pages/SignupPage";
-import { StyledButton, LargeButton } from "./styles/Button.styled";
 import { GlobalStyle } from "./styles/Global.styled";
 import Navbar from "./components/Navbar";
 
@@ -10,13 +9,6 @@ function App() {
 		<div>
 			<GlobalStyle />
          <Navbar />
-			<Link to="/signup">
-				<StyledButton>Signup</StyledButton>
-			</Link>
-			<Link to="/login">
-				<LargeButton>Log in</LargeButton>
-			</Link>
-
 			<Routes>
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/signup" element={<SignupPage />} />

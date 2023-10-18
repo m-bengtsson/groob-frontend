@@ -4,10 +4,11 @@ export const StyledNavbar = styled.div`
    display: flex;
    align-items: center;
    justify-content: space-between;
-   background-color: #f3f3f3;
+   background-color: #F8F8F8;
    height: 3rem;
    border: 1px solid #303030;
    padding: 1em;
+   font-size: 14px;
 
     div{
       gap: 1.5em;
