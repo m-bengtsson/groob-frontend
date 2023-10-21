@@ -19,10 +19,14 @@ export const StyledLoginSignupWrapper = styled.div`
 	flex-grow: 1;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: center;
 
 	p {
 		font-size: 12px;
 		margin: 0.5em 0;
+	}
+
+	h1 {
+		margin-bottom: 30px;
 	}
 `;

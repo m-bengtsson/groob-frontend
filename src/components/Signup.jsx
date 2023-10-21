@@ -18,40 +18,35 @@ export const Signup = () => {
 
 	return (
 		<StyledLoginSignupWrapper>
-			<div>
-				<form onSubmit={handleSubmit}>
-					<StyledInputLabel>
-						<p>Email</p>
-						<StyledInput name="email" type="email" placeholder="Email" />
-					</StyledInputLabel>
+			<h1>Sign up</h1>
+			<form onSubmit={handleSubmit}>
+				<StyledInputLabel>
+					<p>Email</p>
+					<StyledInput name="email" type="email" placeholder="Email" />
+				</StyledInputLabel>
 
-					<StyledInputLabel>
-						<p>Password</p>
-						<StyledInput
-							name="password"
-							type="password"
-							placeholder="Password"
-						/>
-					</StyledInputLabel>
+				<StyledInputLabel>
+					<p>Password</p>
+					<StyledInput name="password" type="password" placeholder="Password" />
+				</StyledInputLabel>
 
-					<StyledInputLabel>
-						<p>Repeat Password</p>
-						<StyledInput
-							name="rePassword"
-							type="password"
-							placeholder="Password"
-						/>
-					</StyledInputLabel>
-					<p>
-						Already have an account?{" "}
-						<Link to="/login">
-							<b>Log in here.</b>
-						</Link>
-					</p>
+				<StyledInputLabel>
+					<p>Repeat Password</p>
+					<StyledInput
+						name="rePassword"
+						type="password"
+						placeholder="Password"
+					/>
+				</StyledInputLabel>
+				<p>
+					Already have an account?{" "}
+					<Link to="/login">
+						<b>Log in here.</b>
+					</Link>
+				</p>
 
-					<LargeButton type="submit">Sign in</LargeButton>
-				</form>
-			</div>
+				<LargeButton type="submit">Sign up</LargeButton>
+			</form>
 		</StyledLoginSignupWrapper>
 	);
 };

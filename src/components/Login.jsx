@@ -13,31 +13,26 @@ export const Login = () => {
 
 	return (
 		<StyledLoginSignupWrapper>
-			<div>
-				<form onSubmit={handleSubmit}>
-					<StyledInputLabel>
-						<p>Email</p>
-						<StyledInput name="email" type="email" placeholder="Email" />
-					</StyledInputLabel>
+			<h1>Login</h1>
+			<form onSubmit={handleSubmit}>
+				<StyledInputLabel>
+					<p>Email</p>
+					<StyledInput name="email" type="email" placeholder="Email" />
+				</StyledInputLabel>
 
-					<StyledInputLabel>
-						<p>Password</p>
-						<StyledInput
-							name="password"
-							type="password"
-							placeholder="Password"
-						/>
-					</StyledInputLabel>
-					<p>
-						Don`t have an account?
-						<Link to="/Signup">
-							<b>Sign up here.</b>
-						</Link>
-					</p>
+				<StyledInputLabel>
+					<p>Password</p>
+					<StyledInput name="password" type="password" placeholder="Password" />
+				</StyledInputLabel>
+				<p>
+					Don`t have an account?
+					<Link to="/Signup">
+						<b>Sign up here.</b>
+					</Link>
+				</p>
 
-					<LargeButton type="submit">Log in</LargeButton>
-				</form>
-			</div>
+				<LargeButton type="submit">Log in</LargeButton>
+			</form>
 		</StyledLoginSignupWrapper>
 	);
 };
