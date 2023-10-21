@@ -8,7 +8,8 @@ function App() {
 	return (
 		<div>
 			<GlobalStyle />
-         <Navbar />
+			<Navbar />
+
 			<Routes>
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/signup" element={<SignupPage />} />
