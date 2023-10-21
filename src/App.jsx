@@ -3,16 +3,19 @@ import { LoginPage } from "./pages/LoginPage";
 import { SignupPage } from "./pages/SignupPage";
 import { GlobalStyle } from "./styles/Global.styled";
 import Navbar from "./components/Navbar";
+import { Footer } from "./components/Footer";
 
 function App() {
 	return (
 		<div>
 			<GlobalStyle />
-         <Navbar />
+			<Navbar />
+
 			<Routes>
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/signup" element={<SignupPage />} />
 			</Routes>
+			{/* <Footer /> */}
 		</div>
 	);
 }

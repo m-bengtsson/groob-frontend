@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const AuthPhotoWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
-	height: 60vh;
+	height: 92vh;
+	gap: 0.5em;
 
 	img {
 		width: 50%;
@@ -17,12 +18,15 @@ export const StyledLoginSignupWrapper = styled.div`
 	display: flex;
 	flex-grow: 1;
 	flex-direction: column;
-	min-width: 220px;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: center;
 
 	p {
 		font-size: 12px;
 		margin: 0.5em 0;
+	}
+
+	h1 {
+		margin-bottom: 30px;
 	}
 `;
