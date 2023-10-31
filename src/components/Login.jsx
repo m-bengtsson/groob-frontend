@@ -2,13 +2,28 @@ import { Link } from "react-router-dom";
 import { LargeButton } from "../styles/Button.styled";
 import { StyledLoginSignupWrapper } from "../styles/Container.styled";
 import { StyledInput, StyledInputLabel } from "../styles/Input.styled";
+import axios, { AxiosHeaders } from "axios";
 
 export const Login = () => {
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const { email, password } = e.target;
+		console.log("EMAIL; PASSWORD: ", email.value, password.value);
+		try {
+			const requestBody = { email: email.value, password: password.value };
 
-		console.log("EMAIL, PASSWORD", email.value, password.value);
+			const resp = await axios.post(
+				"http://localhost:8080/api/identity/login",
+				requestBody,
+				{ withCredentials: true }
+			);
+
+			if (resp.status === 200) {
+				localStorage.setItem("accesstoken", resp.headers.authorization);
+			}
+		} catch (error) {
+			console.log("ÅH NEJ", error.response.data);
+		}
 	};
 
 	return (
