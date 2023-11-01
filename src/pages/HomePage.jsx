@@ -1,10 +1,19 @@
 import { useContext } from "react";
 import { CurrentUserContext } from "../context/currentUser";
+import axios from "axios";
 
 const HomePage = () => {
-  const { removeCurrentUser } = useContext(CurrentUserContext);
+  const { removeCurrentUser, currentUser } = useContext(CurrentUserContext);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await axios.post("http://localhost:8080/api/identity/logout", {
+        id: currentUser.id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
     removeCurrentUser();
   };
 
