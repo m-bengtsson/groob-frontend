@@ -20,20 +20,16 @@ export const Login = () => {
 
 			if (resp.status === 200) {
 				const accesstoken = resp.headers.authorization;
+
 				localStorage.setItem("accesstoken", accesstoken);
 
-				const resp2 = await axios.get(
-					"http://localhost:8080/api/users/currentUser",
-					requestBody,
-					{
-						headers: {
-							Authorization: accesstoken,
-						},
-						withCredentials: true,
-					}
-				);
+				const resp2 = await axios({
+					method: "get",
+					url: "http://localhost:8080/api/users/currentUser",
+					headers: { Authorization: accesstoken },
+				});
 
-				console.log("CURRENTUSER", resp2);
+				console.log("CURRENTUSER", resp2.data);
 			}
 		} catch (error) {
 			console.log("ÅH NEJ", error.response.data);
