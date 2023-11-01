@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { LargeButton } from "../styles/Button.styled";
 import { StyledLoginSignupWrapper } from "../styles/Container.styled";
 import { StyledInput, StyledInputLabel } from "../styles/Input.styled";
-import axios, { AxiosHeaders } from "axios";
+import axios from "axios";
 
 export const Login = () => {
 	const handleSubmit = async (e) => {
@@ -19,7 +19,21 @@ export const Login = () => {
 			);
 
 			if (resp.status === 200) {
-				localStorage.setItem("accesstoken", resp.headers.authorization);
+				const accesstoken = resp.headers.authorization;
+				localStorage.setItem("accesstoken", accesstoken);
+
+				const resp2 = await axios.get(
+					"http://localhost:8080/api/users/currentUser",
+					requestBody,
+					{
+						headers: {
+							Authorization: accesstoken,
+						},
+						withCredentials: true,
+					}
+				);
+
+				console.log("CURRENTUSER", resp2);
 			}
 		} catch (error) {
 			console.log("ÅH NEJ", error.response.data);
