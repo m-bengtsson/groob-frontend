@@ -3,55 +3,67 @@ import axios from "axios";
 
 export const CurrentUserContext = createContext();
 
-/* useEffect(() => {
-	const savedUser = JSON.parse(localStorage.getItem("accesstoken")) || [];
-	setCurrentUser(savedUser);
-}, []); */
 export const CurrentUserProvider = ({ children }) => {
-	const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState();
 
-	useEffect(() => {
-		const getUser = async () => {
-			const accesstoken = localStorage.getItem("accesstoken");
+  useEffect(() => {
+    const getUser = async () => {
+      const accesstoken = localStorage.getItem("accesstoken");
 
-			try {
-				const respUser = await axios({
-					method: "get",
-					url: "http://localhost:8080/api/users/currentUser",
-					withCredentials: true,
-					headers: { Authorization: accesstoken },
-				});
+      try {
+        const respAccess = await axios({
+          method: "get",
+          url: "http://localhost:8080/api/users/currentUser",
+          withCredentials: false,
+          headers: { Authorization: accesstoken },
+        });
 
-				const user = await respUser.data;
+        const user = await respAccess.data;
+        setCurrentUser(user);
+      } catch (error) {
+        if (error.code === "ERR_BAD_REQUEST") {
+          try {
+            const respRefresh = await axios({
+              method: "get",
+              url: "http://localhost:8080/api/users/currentUser",
+              withCredentials: true,
+            });
 
-				setCurrentUser(user);
-			} catch (error) {
-				setCurrentUser(null);
-			}
-		};
+            const user = await respRefresh.data;
+            const accesstoken = respRefresh.headers.authorization;
 
-		getUser();
-	}, []);
+            setCurrentUser(user);
+            localStorage.setItem("accesstoken", accesstoken);
+            return;
+          } catch (error) {
+            setCurrentUser(null);
+          }
+        }
+        setCurrentUser(null);
+      }
+    };
+    getUser();
+  }, []);
 
-	const addCurrentUser = (user) => {
-		setCurrentUser(user);
-	};
+  const addCurrentUser = (user) => {
+    setCurrentUser(user);
+  };
 
-	const removeCurrentUser = () => {
-		setCurrentUser(null);
-		localStorage.removeItem("accesstoken");
-	};
+  const removeCurrentUser = () => {
+    setCurrentUser(null);
+    localStorage.removeItem("accesstoken");
+  };
 
-	const value = {
-		currentUser,
-		addCurrentUser,
-		removeCurrentUser,
-	};
+  const value = {
+    currentUser,
+    addCurrentUser,
+    removeCurrentUser,
+  };
 
-	return (
-		<CurrentUserContext.Provider value={value}>
-			{children}
-		</CurrentUserContext.Provider>
-	);
+  return (
+    <CurrentUserContext.Provider value={value}>
+      {children}
+    </CurrentUserContext.Provider>
+  );
 };
 export default CurrentUserProvider;
