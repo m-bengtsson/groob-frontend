@@ -3,6 +3,10 @@ import axios from "axios";
 
 export const CurrentUserContext = createContext();
 
+/* useEffect(() => {
+	const savedUser = JSON.parse(localStorage.getItem("accesstoken")) || [];
+	setCurrentUser(savedUser);
+}, []); */
 export const CurrentUserProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState();
 
@@ -33,9 +37,15 @@ export const CurrentUserProvider = ({ children }) => {
 		setCurrentUser(user);
 	};
 
+	const removeCurrentUser = () => {
+		setCurrentUser(null);
+		localStorage.removeItem("accesstoken");
+	};
+
 	const value = {
 		currentUser,
 		addCurrentUser,
+		removeCurrentUser,
 	};
 
 	return (
@@ -44,3 +54,4 @@ export const CurrentUserProvider = ({ children }) => {
 		</CurrentUserContext.Provider>
 	);
 };
+export default CurrentUserProvider;
