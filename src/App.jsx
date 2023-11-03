@@ -5,7 +5,7 @@ import { GlobalStyle } from "./styles/Global.styled";
 import HomePage from "./pages/HomePage";
 import { CurrentUserContext } from "./context/currentUser";
 import AdminPage from "./pages/AdminPage";
-import ManageUsersPage from "./pages/ManagaUsersPage";
+import ManageUsersPage from "./pages/ManageUsersPage";
 import ManageItemsPage from "./pages/ManageItemsPage";
 import AdminTemplate from "./pageTemplate/AdminTemplate";
 import UserTemplate from "./pageTemplate/UserTemplate";
@@ -13,7 +13,7 @@ import PublicTemplate from "./pageTemplate/PublicTemplate";
 
 function App() {
 	const { currentUser } = useContext(CurrentUserContext);
-	console.log("CURRENT USER: ", currentUser);
+
 	return (
 		<div>
 			<GlobalStyle />
