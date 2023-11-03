@@ -1,0 +1,37 @@
+[
+	{
+		"id": "36c5179f-6e18-428c-8ac2-4c590fc3e457",
+		"name": "Groob",
+		"email": "groobgroobsson@gmail.com",
+		"role": "admin",
+		"isLocked": false,
+		"createdBy": "36c5179f-6e18-428c-8ac2-4c590fc3e457",
+		"updatedBy": null,
+		"createdAt": "2023-11-01T09:23:10.000Z",
+		"updatedAt": "2023-11-01T09:23:10.000Z"
+	},
+	{
+		"id": "b95faf78-a882-44cd-a6b6-02ad542fdf9e",
+		"name": "reuben",
+		"email": "reuben@reuben.com",
+		"password": "$2b$10$cRYsbXA/R6tbw.Fd2uYbFuHxeV4rZ1H6xcneCNLAIrDPd2YjOs5Iy",
+		"role": "user",
+		"isLocked": false,
+		"createdBy": "36c5179f-6e18-428c-8ac2-4c590fc3e457",
+		"updatedBy": null,
+		"createdAt": "2023-11-01T09:23:10.000Z",
+		"updatedAt": "2023-11-01T09:23:10.000Z"
+	},
+	{
+		"id": "f1e54fd3-ee99-41db-88c8-59ddde3b5fb9",
+		"name": "Rut",
+		"email": "rut@rut.com",
+		"password": "$2b$10$cRYsbXA/R6tbw.Fd2uYbFuHxeV4rZ1H6xcneCNLAIrDPd2YjOs5Iy",
+		"role": "user",
+		"isLocked": false,
+		"createdBy": "36c5179f-6e18-428c-8ac2-4c590fc3e457",
+		"updatedBy": null,
+		"createdAt": "2023-11-01T09:23:10.000Z",
+		"updatedAt": "2023-11-01T09:23:10.000Z"
+	}
+]

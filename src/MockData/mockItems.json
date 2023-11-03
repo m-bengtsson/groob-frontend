@@ -1,0 +1,32 @@
+[
+	{
+		"id": "05c0296e-5c0e-4fd9-b2d9-c6537dc78dfc",
+		"title": "Blue shirt",
+		"description": "Shirt made out of cotton",
+		"numberOfItems": 5,
+		"createdBy": "36c5179f-6e18-428c-8ac2-4c590fc3e457",
+		"updatedBy": null,
+		"createdAt": "2023-11-01T09:23:10.000Z",
+		"updatedAt": "2023-11-01T09:23:10.000Z"
+	},
+	{
+		"id": "7c6c085b-7d98-4eb5-be8d-79c3eefc036c",
+		"title": "Green",
+		"description": "A pair of green pants made out of linen",
+		"numberOfItems": 8,
+		"createdBy": "36c5179f-6e18-428c-8ac2-4c590fc3e457",
+		"updatedBy": null,
+		"createdAt": "2023-11-01T09:23:10.000Z",
+		"updatedAt": "2023-11-01T09:23:10.000Z"
+	},
+	{
+		"id": "ec59cfcf-c2b3-4082-97af-02b98cab0294",
+		"title": "Red socks ",
+		"description": "A pair of red socks",
+		"numberOfItems": 15,
+		"createdBy": "36c5179f-6e18-428c-8ac2-4c590fc3e457",
+		"updatedBy": null,
+		"createdAt": "2023-11-01T09:23:10.000Z",
+		"updatedAt": "2023-11-01T09:23:10.000Z"
+	}
+]
