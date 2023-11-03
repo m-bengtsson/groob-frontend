@@ -9,7 +9,7 @@ import ManageUsersPage from "./pages/ManagaUsersPage";
 import ManageItemsPage from "./pages/ManageItemsPage";
 import AdminTemplate from "./pageTemplate/AdminTemplate";
 import UserTemplate from "./pageTemplate/UserTemplate";
-import MainTemplate from "./pageTemplate/PublicTemplate";
+import PublicTemplate from "./pageTemplate/PublicTemplate";
 
 function App() {
 	const { currentUser } = useContext(CurrentUserContext);
@@ -19,7 +19,7 @@ function App() {
 			<GlobalStyle />
 			<Routes>
 				{!currentUser && (
-					<Route path="/" element={<MainTemplate />}>
+					<Route path="/" element={<PublicTemplate />}>
 						<Route path="/" element={<LoginPage />} />
 					</Route>
 				)}
