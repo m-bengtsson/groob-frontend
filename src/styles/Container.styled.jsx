@@ -30,3 +30,17 @@ export const StyledLoginSignupWrapper = styled.div`
 		margin-bottom: 30px;
 	}
 `;
+
+export const StyledManageUsers = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	h2 {
+		margin: 20px;
+	}
+
+	h5 {
+		margin: 10px;
+	}
+`;
