@@ -15,3 +15,11 @@ export const LargeButton = styled(StyledButton)`
 	width: 300px;
 	height: 40px;
 `;
+
+export const SmallButton = styled(StyledButton)`
+	width: 80px;
+	height: 20px;
+	font-size: 0.7em;
+	font-weight: 700;
+	padding: 0 0.2em;
+`;
