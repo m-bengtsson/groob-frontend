@@ -8,44 +8,44 @@ import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../context/currentUser";
 
 const AdminNavbar = () => {
-  const { removeCurrentUser, currentUser } = useContext(CurrentUserContext);
+	const { removeCurrentUser, currentUser } = useContext(CurrentUserContext);
 
-  const handleLogout = async () => {
-    try {
-      await axios.post(
-        "http://localhost:8080/api/identity/logout",
-        {
-          id: currentUser.id,
-        },
-        { withCredentials: true }
-      );
+	const handleLogout = async () => {
+		try {
+			await axios.post(
+				"http://localhost:8080/api/identity/logout",
+				{
+					id: currentUser.id,
+				},
+				{ withCredentials: true }
+			);
 
-      removeCurrentUser();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  return (
-    <StyledNavbar>
-      <Logo>GROOB</Logo>
-      <View>
-        <Link to="/admin/manage-users">
-          <View>
-            <p>Users</p>
-            <IoSettingsOutline size={22} />
-          </View>
-        </Link>
-        <Link to="/admin/manage-items">
-          <View>
-            <p>Items</p>
-            <IoSettingsOutline size={22} />
-          </View>
-        </Link>
-      </View>
-      <p onClick={handleLogout}>Logout</p>
-      <VscAccount size={22} />
-    </StyledNavbar>
-  );
+			removeCurrentUser();
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	return (
+		<StyledNavbar>
+			<Logo>GROOB</Logo>
+			<View>
+				<Link to="manage-users">
+					<View>
+						<p>Users</p>
+						<IoSettingsOutline size={22} />
+					</View>
+				</Link>
+				<Link to="manage-items">
+					<View>
+						<p>Items</p>
+						<IoSettingsOutline size={22} />
+					</View>
+				</Link>
+			</View>
+			<p onClick={handleLogout}>Logout</p>
+			<VscAccount size={22} />
+		</StyledNavbar>
+	);
 };
 
 export default AdminNavbar;
