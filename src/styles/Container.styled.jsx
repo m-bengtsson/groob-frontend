@@ -43,4 +43,9 @@ export const StyledManageUsers = styled.div`
 	h5 {
 		margin: 10px;
 	}
+
+	.title-btn-container {
+		display: flex;
+		justify-content: space-between;
+	}
 `;

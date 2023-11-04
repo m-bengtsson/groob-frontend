@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
-export const UserTable = styled.div`
-	display: flex;
-	flex-direction: column;
+export const StyledCustomTable = styled.div`
 	border: 1px solid var(--light-grey);
 	justify-content: space-evenly;
 	margin: 0 0.5em;
 	width: 90vw;
+	height: 100%;
+	max-height: 30vh;
+	overflow-y: auto;
 	margin: 0 0 2em 0;
 
 	p {
-		font-size: 10px;
+		font-size: 12px;
 	}
 `;
 
-export const UserRow = styled.div`
+export const StyledCustomRow = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -38,7 +39,7 @@ export const UserRow = styled.div`
 	}
 `;
 
-export const HeadUserRow = styled(UserRow)`
+export const StyledHeadCustomRow = styled(StyledCustomRow)`
 	background: var(--light-grey);
 
 	p {
