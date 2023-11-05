@@ -4,10 +4,12 @@ import { SmallButton } from "../styles/Button.styled";
 import { StyledManageUsers } from "../styles/Container.styled";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AddUserModal from "../components/AddUserModal";
 
 const ManageUsersPage = () => {
 	const navigate = useNavigate();
 	const [users, setUsers] = useState();
+	const [showAddUser, setShowAddUser] = useState(false);
 	const titles = [
 		"id",
 		"Name",
@@ -61,10 +63,6 @@ const ManageUsersPage = () => {
 	const roleUser = users?.filter((user) => user.role === "user");
 	const roleAdmin = users?.filter((user) => user.role === "admin");
 
-	const addUserHandler = () => {
-		console.log("ADD USER!");
-	};
-
 	if (!users) {
 		return <div>Loading...</div>;
 	}
@@ -76,7 +74,9 @@ const ManageUsersPage = () => {
 			<div>
 				<div className={"title-btn-container"}>
 					<h5>Admin Users</h5>
-					<SmallButton onClick={addUserHandler}>+ Add User</SmallButton>
+					<SmallButton onClick={() => setShowAddUser(true)}>
+						+ Add User
+					</SmallButton>
 				</div>
 
 				<CustomTable data={roleAdmin} titles={titles} />
@@ -86,6 +86,12 @@ const ManageUsersPage = () => {
 				<h5>User Users</h5>
 				<CustomTable data={roleUser} titles={titles} />
 			</div>
+			{showAddUser && (
+				<AddUserModal
+					setShowAddUser={setShowAddUser}
+					onClick={() => setShowAddUser(true)}
+				/>
+			)}
 		</StyledManageUsers>
 	);
 };
