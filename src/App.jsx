@@ -1,5 +1,5 @@
-import { Route, Routes } from "react-router-dom";
-import { useContext } from "react";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
 import { LoginPage } from "./pages/LoginPage";
 import { GlobalStyle } from "./styles/Global.styled";
 import HomePage from "./pages/HomePage";
@@ -12,18 +12,16 @@ import UserTemplate from "./pageTemplate/UserTemplate";
 import PublicTemplate from "./pageTemplate/PublicTemplate";
 
 function App() {
-	const { currentUser } = useContext(CurrentUserContext);
+	const { currentUser, isLoading } = useContext(CurrentUserContext);
+
+	if (isLoading) {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<div>
 			<GlobalStyle />
 			<Routes>
-				{!currentUser && (
-					<Route path="/" element={<PublicTemplate />}>
-						<Route path="/" element={<LoginPage />} />
-					</Route>
-				)}
-
 				{currentUser && currentUser.role === "admin" && (
 					<Route path="/" element={<AdminTemplate />}>
 						<Route path="/" element={<AdminPage />} />
@@ -35,6 +33,12 @@ function App() {
 				{currentUser && currentUser.role === "user" && (
 					<Route path="/" element={<UserTemplate />}>
 						<Route path="/" element={<HomePage />} />
+					</Route>
+				)}
+
+				{!currentUser && (
+					<Route path="/" element={<PublicTemplate />}>
+						<Route path="/" element={<LoginPage />} />
 					</Route>
 				)}
 			</Routes>
