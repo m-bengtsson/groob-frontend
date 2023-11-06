@@ -1,24 +1,30 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import instance from "../axiosconfig";
 
 export const CurrentUserContext = createContext();
 
 export const CurrentUserProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState();
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		setIsLoading(true);
 		const getUser = async () => {
-			const response = await instance.get("/users/currentUser");
-			const user = await response.data;
-			setCurrentUser(user);
-			setIsLoading(false);
+			try {
+				const response = await instance.get("/users/currentUser");
+				const user = await response.data;
+				setCurrentUser(user);
+				setIsLoading(false);
+			} catch (error) {
+				setCurrentUser(null);
+				setIsLoading(false);
+				navigate("/");
+			}
 		};
-
 		getUser();
-		setIsLoading(false);
-	}, []);
+	}, [navigate]);
 
 	const addCurrentUser = (user) => {
 		setCurrentUser(user);

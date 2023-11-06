@@ -13,6 +13,7 @@ import PublicTemplate from "./pageTemplate/PublicTemplate";
 
 function App() {
 	const { currentUser, isLoading } = useContext(CurrentUserContext);
+
 	if (isLoading) {
 		return <div>Loading...</div>;
 	}

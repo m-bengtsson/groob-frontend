@@ -22,7 +22,7 @@ instance.interceptors.response.use(
 		return response;
 	},
 
-	(error) => {
+	async (error) => {
 		const originalRequest = error.config;
 		const status = error.response ? error.response.status : null;
 		const message = error.response ? error.response.data : null;
@@ -31,9 +31,10 @@ instance.interceptors.response.use(
 			originalRequest._retry = true;
 			if (message === "No accesstoken provided.") {
 				error.config.withCredentials = true;
-				return instance(error.config);
+				return await instance(error.config);
 			}
 		}
+
 		return Promise.reject(error);
 	}
 );
