@@ -1,10 +1,12 @@
-import axios from "axios";
-import { SmallButton, StyledButton } from "../styles/Button.styled";
+import { StyledButton } from "../styles/Button.styled";
 import { useState } from "react";
-import { StyledInput, StyledInputLabel } from "../styles/Input.styled";
+import { StyledInput } from "../styles/Input.styled";
 import { StyledAddUser } from "../styles/Container.styled";
+import instance from "../axiosconfig";
+import { useNavigate } from "react-router-dom";
 
 const AddUserModal = ({ setShowAddUser }) => {
+	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false);
 	const [message, setMessage] = useState("");
 
@@ -14,39 +16,20 @@ const AddUserModal = ({ setShowAddUser }) => {
 		setMessage("");
 
 		const email = e.target.email.value;
-
-		const accesstoken = localStorage.getItem("accesstoken");
 		try {
-			await axios({
-				method: "post",
-				url: "http://localhost:8080/api/identity/invite",
-				withCredentials: false,
-				headers: { Authorization: accesstoken },
-				data: { email },
-			});
+			await instance.post("/identity/invite", { email });
 
 			setMessage(`An email has been sent to ${email}`);
 			setIsLoading(false);
 		} catch (error) {
-			if (error.code === "ERR_BAD_REQUEST") {
-				try {
-					const respRefresh = await axios({
-						method: "get",
-						url: "http://localhost:8080/api/users",
-						withCredentials: true,
-						data: { email },
-					});
+			if (error.message === "Request failed with status code 401") {
+				setMessage(
+					"You have been logged out and will be redirected to login page"
+				);
 
-					const accesstoken = respRefresh.headers.authorization;
-					localStorage.setItem("accesstoken", accesstoken);
-					return;
-				} catch (error) {
-					setMessage(
-						"Something went wrong when trying to send an email, try again later"
-					);
-					setIsLoading(false);
-				}
+				return setTimeout(() => navigate("/login"), 3000);
 			}
+
 			setMessage(
 				"Something went wrong when trying to send an email, try again later"
 			);
