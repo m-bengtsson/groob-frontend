@@ -22,6 +22,7 @@ const AdminNavbar = () => {
 
 			removeCurrentUser();
 		} catch (error) {
+			//todo: handle this error
 			console.log(error);
 		}
 	};
