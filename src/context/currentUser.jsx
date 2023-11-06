@@ -1,25 +1,23 @@
 import { createContext, useEffect, useState } from "react";
-import axios from "axios";
 import instance from "../axiosconfig";
 
 export const CurrentUserContext = createContext();
 
 export const CurrentUserProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState();
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
+		setIsLoading(true);
 		const getUser = async () => {
-			try {
-				const respAccess = await instance.get("/users/currentUser");
-
-				const user = await respAccess.data;
-				setCurrentUser(user);
-			} catch (error) {
-				//todo: handle this better
-				console.log("You are not logged in");
-			}
+			const response = await instance.get("/users/currentUser");
+			const user = await response.data;
+			setCurrentUser(user);
+			setIsLoading(false);
 		};
+
 		getUser();
+		setIsLoading(false);
 	}, []);
 
 	const addCurrentUser = (user) => {
@@ -35,6 +33,7 @@ export const CurrentUserProvider = ({ children }) => {
 		currentUser,
 		addCurrentUser,
 		removeCurrentUser,
+		isLoading,
 	};
 
 	return (
