@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import AdminNavbar from "../components/AdminNavbar";
 
-export const AdminTemplate = () => {
+const AdminTemplate = () => {
 	return (
 		<>
 			<AdminNavbar />
