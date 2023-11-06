@@ -1,5 +1,5 @@
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import { useContext } from "react";
 import { LoginPage } from "./pages/LoginPage";
 import { GlobalStyle } from "./styles/Global.styled";
 import HomePage from "./pages/HomePage";
@@ -10,6 +10,7 @@ import ManageItemsPage from "./pages/ManageItemsPage";
 import AdminTemplate from "./pageTemplate/AdminTemplate";
 import UserTemplate from "./pageTemplate/UserTemplate";
 import PublicTemplate from "./pageTemplate/PublicTemplate";
+import NoRoute from "./pages/NoRoute";
 
 function App() {
 	const { currentUser, isLoading } = useContext(CurrentUserContext);
@@ -41,6 +42,7 @@ function App() {
 						<Route path="/" element={<LoginPage />} />
 					</Route>
 				)}
+				<Route path="*" element={<NoRoute />} />
 			</Routes>
 		</div>
 	);
