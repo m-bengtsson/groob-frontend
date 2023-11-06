@@ -1,7 +1,6 @@
-import axios from "axios";
-import { SmallButton, StyledButton } from "../styles/Button.styled";
+import { StyledButton } from "../styles/Button.styled";
 import { useState } from "react";
-import { StyledInput, StyledInputLabel } from "../styles/Input.styled";
+import { StyledInput } from "../styles/Input.styled";
 import { StyledAddUser } from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";

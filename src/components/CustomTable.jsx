@@ -1,10 +1,12 @@
 /* import mockUsers from "../MockData/mockUsers.json"; */
+import { useState } from "react";
 import {
 	StyledCustomTable,
 	StyledCustomRow,
 	StyledHeadCustomRow,
 } from "../styles/Tables.styled";
 import ManageIcons from "./ManageIcons";
+import DeleteModal from "./DeleteModal";
 
 /**
  *
@@ -13,6 +15,23 @@ import ManageIcons from "./ManageIcons";
  */
 
 const CustomTable = ({ data, titles }) => {
+	const [showDeleteModal, setShowDeleteModal] = useState(false);
+	const [selectedItem, setSelectedItem] = useState();
+
+	const editHandler = (item) => {
+		console.log("Edit!", item);
+	};
+
+	const deleteHandler = (item) => {
+		if (item.name) {
+			setSelectedItem({ title: item.name, id: item.id });
+			setShowDeleteModal(true);
+		} else if (item.title) {
+			setSelectedItem({ title: item.title, id: item.id });
+			setShowDeleteModal(true);
+		}
+	};
+
 	return (
 		<div>
 			<StyledCustomTable>
@@ -48,10 +67,19 @@ const CustomTable = ({ data, titles }) => {
 							}
 							return null;
 						})}
-						<ManageIcons />
+						<ManageIcons
+							editHandler={() => editHandler(item)}
+							deleteHandler={() => deleteHandler(item)}
+						/>
 					</StyledCustomRow>
 				))}
 			</StyledCustomTable>
+			{showDeleteModal && (
+				<DeleteModal
+					setShowDeleteModal={setShowDeleteModal}
+					selectedItem={selectedItem}
+				/>
+			)}
 		</div>
 	);
 };
