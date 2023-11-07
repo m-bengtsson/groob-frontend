@@ -1,7 +1,7 @@
 import { StyledButton } from "../styles/Button.styled";
 import { useState } from "react";
 import { StyledInput } from "../styles/Input.styled";
-import { StyledAddUser } from "../styles/Container.styled";
+import { StyledSmallModal } from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +38,7 @@ const AddUserModal = ({ setShowAddUser }) => {
 	};
 
 	return (
-		<StyledAddUser>
+		<StyledSmallModal>
 			<form onSubmit={addUser}>
 				<label>
 					<StyledInput type="email" name="email" placeholder="Email" />
@@ -52,7 +52,7 @@ const AddUserModal = ({ setShowAddUser }) => {
 			<button className="close-button" onClick={() => setShowAddUser(false)}>
 				X
 			</button>
-		</StyledAddUser>
+		</StyledSmallModal>
 	);
 };
 

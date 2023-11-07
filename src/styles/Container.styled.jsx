@@ -31,7 +31,7 @@ export const StyledLoginSignupWrapper = styled.div`
 	}
 `;
 
-export const StyledManageUsers = styled.div`
+export const StyledManagePage = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -50,7 +50,7 @@ export const StyledManageUsers = styled.div`
 	}
 `;
 
-export const StyledAddUser = styled.div`
+export const StyledSmallModal = styled.div`
 	position: absolute;
 	display: flex;
 	flex-direction: row;

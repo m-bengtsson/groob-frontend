@@ -1,13 +1,9 @@
-/* import mockUsers from "../MockData/mockUsers.json"; */
-import { useState } from "react";
 import {
 	StyledCustomTable,
 	StyledCustomRow,
 	StyledHeadCustomRow,
 } from "../styles/Tables.styled";
 import ManageIcons from "./ManageIcons";
-import DeleteModal from "./DeleteModal";
-import EditUserModal from "./EditUserModal";
 
 /**
  *
@@ -15,31 +11,7 @@ import EditUserModal from "./EditUserModal";
   - render table with titles and data
  */
 
-const CustomTable = ({ data, titles }) => {
-	const [showDeleteModal, setShowDeleteModal] = useState(false);
-	const [selectedItem, setSelectedItem] = useState();
-	const [showEditModal, setShowEditModal] = useState(false);
-
-	const editHandler = (item) => {
-		if (item.name) {
-			setSelectedItem({ title: item.name, id: item.id, role: item.role });
-			setShowEditModal(true);
-		} else if (item.title) {
-			setSelectedItem({ title: item.title, id: item.id });
-			setShowEditModal(true);
-		}
-	};
-
-	const deleteHandler = (item) => {
-		if (item.name) {
-			setSelectedItem({ title: item.name, id: item.id });
-			setShowDeleteModal(true);
-		} else if (item.title) {
-			setSelectedItem({ title: item.title, id: item.id });
-			setShowDeleteModal(true);
-		}
-	};
-
+const CustomTable = ({ data, titles, editHandler, deleteHandler }) => {
 	return (
 		<div>
 			<StyledCustomTable>
@@ -82,18 +54,6 @@ const CustomTable = ({ data, titles }) => {
 					</StyledCustomRow>
 				))}
 			</StyledCustomTable>
-			{showDeleteModal && (
-				<DeleteModal
-					setShowDeleteModal={setShowDeleteModal}
-					selectedItem={selectedItem}
-				/>
-			)}
-			{showEditModal && (
-				<EditUserModal
-					setShowEditModal={setShowEditModal}
-					selectedItem={selectedItem}
-				/>
-			)}
 		</div>
 	);
 };

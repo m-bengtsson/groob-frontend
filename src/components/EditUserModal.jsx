@@ -1,6 +1,6 @@
 import { StyledButton } from "../styles/Button.styled";
 import { useState } from "react";
-import { StyledAddUser } from "../styles/Container.styled";
+import { StyledSmallModal } from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -48,7 +48,7 @@ const EditUserModal = ({ setShowEditModal, selectedItem }) => {
 	};
 
 	return (
-		<StyledAddUser>
+		<StyledSmallModal>
 			<p>{message}</p>
 			{!isEdited && (
 				<>
@@ -86,7 +86,7 @@ const EditUserModal = ({ setShowEditModal, selectedItem }) => {
 			<button className="close-button" onClick={() => setShowEditModal(false)}>
 				X
 			</button>
-		</StyledAddUser>
+		</StyledSmallModal>
 	);
 };
 
