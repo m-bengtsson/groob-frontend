@@ -1,14 +1,16 @@
 import { StyledButton } from "../styles/Button.styled";
 import { useState } from "react";
-import { StyledAddUser } from "../styles/Container.styled";
+import { StyledSmallModal } from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UsersContext } from "../context/users";
+import { ItemsContext } from "../context/items";
 
-const DeleteModal = ({ setShowDeleteModal, selectedItem }) => {
+const DeleteModal = ({ setShowDeleteModal, selectedItem, dataType }) => {
 	const navigate = useNavigate();
 	const { setUsers } = useContext(UsersContext);
+	const { setItems } = useContext(ItemsContext);
 	const [isLoading, setIsLoading] = useState(false);
 	const [message, setMessage] = useState(
 		`Are you sure you want to delete ${selectedItem.title}?`
@@ -22,11 +24,16 @@ const DeleteModal = ({ setShowDeleteModal, selectedItem }) => {
 		setMessage(`Are you sure you want to delete ${selectedItem.title}?`);
 
 		try {
-			await instance.delete(`/users/${selectedItem.id}`);
-			const response = await instance.get("/users");
-			const allUsers = await response.data;
+			await instance.delete(`/${dataType}/${selectedItem.id}`);
+			const response = await instance.get(`${dataType}`);
+			const allData = await response.data;
 
-			setUsers(allUsers);
+			if (dataType === "users") {
+				setUsers(allData);
+			} else if (dataType === "items") {
+				setItems(allData);
+			}
+
 			setMessage(`Delete successful!`);
 			setIsLoading(false);
 			setIsDeleted(true);
@@ -46,7 +53,7 @@ const DeleteModal = ({ setShowDeleteModal, selectedItem }) => {
 	};
 
 	return (
-		<StyledAddUser>
+		<StyledSmallModal>
 			<p>{message}</p>
 
 			{isDeleted ? (
@@ -64,7 +71,7 @@ const DeleteModal = ({ setShowDeleteModal, selectedItem }) => {
 			>
 				X
 			</button>
-		</StyledAddUser>
+		</StyledSmallModal>
 	);
 };
 
