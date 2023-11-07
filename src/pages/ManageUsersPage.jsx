@@ -7,7 +7,8 @@ import { UsersContext } from "../context/users";
 import instance from "../axiosconfig";
 
 const ManageUsersPage = () => {
-	const { users, setUsers } = useContext(UsersContext);
+	const { users, setUsers, errorMessage, setErrorMessage } =
+		useContext(UsersContext);
 	const [showAddUser, setShowAddUser] = useState(false);
 
 	const titles = [
@@ -21,7 +22,7 @@ const ManageUsersPage = () => {
 	];
 
 	useEffect(() => {
-		if (!users) {
+		if (users.length === 0) {
 			const getUsers = async () => {
 				try {
 					const response = await instance.get("/users");
@@ -29,12 +30,14 @@ const ManageUsersPage = () => {
 
 					setUsers(allUsers);
 				} catch (error) {
-					console.log("Error");
+					if (error.response.status === 404) {
+						setErrorMessage("Oh no! We could not fetch the items :'(");
+					}
 				}
 			};
 			getUsers();
 		}
-	}, [users, setUsers]);
+	}, [users, setUsers, setErrorMessage]);
 
 	const roleUser = users?.filter((user) => user.role === "user");
 	const roleAdmin = users?.filter((user) => user.role === "admin");
@@ -54,11 +57,13 @@ const ManageUsersPage = () => {
 						+ Add User
 					</SmallButton>
 				</div>
+				{errorMessage && <p>{errorMessage}</p>}
 				<CustomTable data={roleAdmin} titles={titles} />
 			</div>
 
 			<div>
 				<h5>User Users</h5>
+				{errorMessage && <p>{errorMessage}</p>}
 				<CustomTable data={roleUser} titles={titles} />
 			</div>
 			{showAddUser && (
