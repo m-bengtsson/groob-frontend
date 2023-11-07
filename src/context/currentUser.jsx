@@ -19,9 +19,9 @@ export const CurrentUserProvider = ({ children }) => {
 				setCurrentUser(user);
 				setIsLoading(false);
 			} catch (error) {
+				navigate("/");
 				setCurrentUser(null);
 				setIsLoading(false);
-				navigate("/");
 			}
 		};
 		getUser();
@@ -33,6 +33,7 @@ export const CurrentUserProvider = ({ children }) => {
 
 	const removeCurrentUser = () => {
 		setCurrentUser(null);
+		navigate("/");
 		localStorage.removeItem("accesstoken");
 	};
 
