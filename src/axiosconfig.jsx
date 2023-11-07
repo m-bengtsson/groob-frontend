@@ -1,7 +1,6 @@
 import axios from "axios";
 
 //todo: try and make stuff async to fix rerendering problem
-//todo: Kolla svar invalid token, alltså när accesstoken gått ut
 const instance = axios.create({
 	baseURL: "http://localhost:8080/api/",
 });
