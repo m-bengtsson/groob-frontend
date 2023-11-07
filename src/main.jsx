@@ -6,13 +6,13 @@ import CurrentUserProvider from "./context/currentUser.jsx";
 import ItemsContextProvider from "./context/items.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <CurrentUserProvider>
-        <ItemsContextProvider>
-          <App />
-        </ItemsContextProvider>
-      </CurrentUserProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+	<React.StrictMode>
+		<BrowserRouter>
+			<CurrentUserProvider>
+				<ItemsContextProvider>
+					<App />
+				</ItemsContextProvider>
+			</CurrentUserProvider>
+		</BrowserRouter>
+	</React.StrictMode>
 );

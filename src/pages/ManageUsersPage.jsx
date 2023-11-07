@@ -1,17 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import CustomTable from "../components/CustomTable";
 import { SmallButton } from "../styles/Button.styled";
 import { StyledManageUsers } from "../styles/Container.styled";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import AddUserModal from "../components/AddUserModal";
-import instance from "../axiosconfig";
-import { CurrentUserContext } from "../context/currentUser";
+import { UsersContext } from "../context/users";
 
 const ManageUsersPage = () => {
-	const { removeCurrentUser } = useContext(CurrentUserContext);
-	const [users, setUsers] = useState();
+	const { users } = useContext(UsersContext);
 	const [showAddUser, setShowAddUser] = useState(false);
+
+	console.log("USERS", users);
 	const titles = [
 		"id",
 		"Name",
@@ -21,20 +19,6 @@ const ManageUsersPage = () => {
 		"Created",
 		"Updated",
 	];
-
-	useEffect(() => {
-		const getUsers = async () => {
-			try {
-				const response = await instance.get("/users");
-				const allUsers = await response.data;
-
-				setUsers(allUsers);
-			} catch (error) {
-				removeCurrentUser();
-			}
-		};
-		getUsers();
-	}, [removeCurrentUser]);
 
 	const roleUser = users?.filter((user) => user.role === "user");
 	const roleAdmin = users?.filter((user) => user.role === "admin");
