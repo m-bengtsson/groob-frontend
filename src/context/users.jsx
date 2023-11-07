@@ -1,30 +1,13 @@
-import { createContext, useEffect, useState } from "react";
-import instance from "../axiosconfig";
+import { createContext, useState } from "react";
 
 export const UsersContext = createContext();
 
 export const UsersContextProvider = ({ children }) => {
-	const [users, setUsers] = useState([]);
-
-	useEffect(() => {
-		if (users.length === 0) {
-			const getUsers = async () => {
-				try {
-					const response = await instance.get("/users");
-					const allUsers = response.data;
-
-					setUsers(allUsers);
-				} catch (error) {
-					console.log(error);
-				}
-			};
-			getUsers();
-		}
-		return;
-	}, [users.length]);
+	const [users, setUsers] = useState();
 
 	const value = {
 		users,
+		setUsers,
 	};
 
 	return (
