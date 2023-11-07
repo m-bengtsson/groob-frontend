@@ -5,27 +5,26 @@ export const ItemsContext = createContext();
 
 export const ItemsContextProvider = ({ children }) => {
   const [items, setItems] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const getItems = async () => {
       try {
         const response = await instance.get("/items");
-        const items = await response.data;
+        const items = response.data;
         setItems(items);
       } catch (error) {
-        // todo: göra något här
-        console.log(error);
+        if (error.response.status === 404) {
+          setErrorMessage("Oh no! We could not fetch the items :'(");
+        }
       }
     };
     getItems();
   }, []);
 
-  /*  const addItem = (item) => {
-    setItems(prev);
-  }; */
-
   const value = {
     items,
+    errorMessage,
   };
 
   return (

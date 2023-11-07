@@ -5,11 +5,12 @@ import { ItemsContext } from "../context/items";
 import ItemCard from "../components/ItemCard";
 
 const HomePage = () => {
-  const { items } = useContext(ItemsContext);
+  const { items, errorMessage } = useContext(ItemsContext);
 
   return (
     <UserHomeContainer>
       <img className="image" src={largeImage} />
+      {errorMessage && <p>{errorMessage}</p>}
       <div className="cards-wrapper">
         {items?.map((item) => (
           <ItemCard key={item.id} item={item} />
