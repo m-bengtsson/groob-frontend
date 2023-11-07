@@ -15,6 +15,7 @@ export const CurrentUserProvider = ({ children }) => {
 			try {
 				const response = await instance.get("/users/currentUser");
 				const user = await response.data;
+
 				setCurrentUser(user);
 				setIsLoading(false);
 			} catch (error) {
