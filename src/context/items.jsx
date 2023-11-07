@@ -13,6 +13,7 @@ export const ItemsContextProvider = ({ children }) => {
         const items = await response.data;
         setItems(items);
       } catch (error) {
+        // todo: göra något här
         console.log(error);
       }
     };
