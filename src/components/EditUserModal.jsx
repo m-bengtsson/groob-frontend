@@ -3,9 +3,12 @@ import { useState } from "react";
 import { StyledAddUser } from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UsersContext } from "../context/users";
 
 const EditUserModal = ({ setShowEditModal, selectedItem }) => {
 	const navigate = useNavigate();
+	const { setUsers } = useContext(UsersContext);
 	const [isLoading, setIsLoading] = useState(false);
 	const [message, setMessage] = useState(
 		`Choose role for ${selectedItem.title}: `
@@ -21,6 +24,10 @@ const EditUserModal = ({ setShowEditModal, selectedItem }) => {
 			await instance.patch(`/users/${selectedItem.id}`, {
 				role: selectedOption,
 			});
+			const response = await instance.get("/users");
+			const allUsers = await response.data;
+
+			setUsers(allUsers);
 
 			setMessage(`Edit successful!`);
 			setIsLoading(false);

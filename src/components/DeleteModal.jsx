@@ -3,9 +3,12 @@ import { useState } from "react";
 import { StyledAddUser } from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UsersContext } from "../context/users";
 
 const DeleteModal = ({ setShowDeleteModal, selectedItem }) => {
 	const navigate = useNavigate();
+	const { setUsers } = useContext(UsersContext);
 	const [isLoading, setIsLoading] = useState(false);
 	const [message, setMessage] = useState(
 		`Are you sure you want to delete ${selectedItem.title}?`
@@ -15,11 +18,15 @@ const DeleteModal = ({ setShowDeleteModal, selectedItem }) => {
 	const DeleteItem = async () => {
 		setIsDeleted(false);
 		setIsLoading(true);
+		setUsers;
 		setMessage(`Are you sure you want to delete ${selectedItem.title}?`);
 
 		try {
 			await instance.delete(`/users/${selectedItem.id}`);
+			const response = await instance.get("/users");
+			const allUsers = await response.data;
 
+			setUsers(allUsers);
 			setMessage(`Delete successful!`);
 			setIsLoading(false);
 			setIsDeleted(true);
