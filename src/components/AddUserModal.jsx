@@ -5,6 +5,9 @@ import { StyledSmallModal } from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
 
+const validEmail =
+	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 const AddUserModal = ({ setShowAddUser }) => {
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false);
@@ -14,8 +17,18 @@ const AddUserModal = ({ setShowAddUser }) => {
 		e.preventDefault();
 		setIsLoading(true);
 		setMessage("");
-
 		const email = e.target.email.value;
+
+		if (!email) {
+			setIsLoading(false);
+			return setMessage("All fields required");
+		}
+
+		if (!validEmail.test(email.value)) {
+			setIsLoading(false);
+			return setMessage("Please enter a valid email address");
+		}
+
 		try {
 			await instance.post("/identity/invite", { email });
 
@@ -30,9 +43,7 @@ const AddUserModal = ({ setShowAddUser }) => {
 				return setTimeout(() => navigate("/"), 3000);
 			}
 
-			setMessage(
-				"Something went wrong when trying to send an email, try again later"
-			);
+			setMessage(`${error.message}`);
 			setIsLoading(false);
 		}
 	};

@@ -24,7 +24,6 @@ export const Login = () => {
 		}
 
 		if (!validEmail.test(email.value)) {
-			console.log(validEmail.test(email));
 			return setMessage("Please enter a valid email address");
 		}
 
