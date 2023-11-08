@@ -33,7 +33,7 @@ const Navbar = () => {
 				<p>Men</p>
 				<p>Accessories</p>
 			</View>
-			<p onClick={handleLogout}>Logout</p>
+			{currentUser && <p onClick={handleLogout}>Logout</p>}
 			<NavIcons />
 		</StyledNavbar>
 	);
