@@ -19,20 +19,11 @@ export const CustomSmallTable = ({ data, titles }) => {
 			{data.map((item) => (
 				<StyledCustomRow key={item.id}>
 					{Object.keys(item).map((key) => {
-						if (
-							key !== "role" &&
-							key !== "createdAt" &&
-							key !== "updatedAt" &&
-							key !== "updatedBy"
-						) {
-							console.log("KEY", key);
-							return (
-								<div key={key}>
-									<p>{item[key]}</p>
-								</div>
-							);
-						}
-						return null;
+						return (
+							<div key={key}>
+								<p>{item[key]}</p>
+							</div>
+						);
 					})}
 				</StyledCustomRow>
 			))}

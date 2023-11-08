@@ -120,7 +120,7 @@ export const StyledPartContainer = styled.div`
 		display: flex;
 		flex-direction: column;
 		width: 20vw;
-		height: ${(props) => (props.long ? "62vh" : "30vh")};
+		height: ${(props) => (props.$long ? "62vh" : "30vh")};
 		border: 1px solid var(--light-grey);
 		border-right: none;
 		background: #ffffff;
