@@ -1,6 +1,5 @@
 import axios from "axios";
 
-//todo: try and make stuff async to fix rerendering problem
 const instance = axios.create({
 	baseURL: "http://localhost:8080/api/",
 });

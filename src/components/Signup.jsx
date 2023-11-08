@@ -40,7 +40,7 @@ export const Signup = () => {
 				</StyledInputLabel>
 				<p>
 					Already have an account?{" "}
-					<Link to="/login">
+					<Link to="/">
 						<b>Log in here.</b>
 					</Link>
 				</p>
