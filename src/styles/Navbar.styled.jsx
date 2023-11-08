@@ -6,7 +6,7 @@ export const StyledNavbar = styled.div`
 	justify-content: space-between;
 	background-color: #f8f8f8;
 	height: 8vh;
-	border: 1px solid #303030;
+	border-bottom: 1px solid #303030;
 	padding: 1em;
 	font-size: 14px;
 
