@@ -31,7 +31,7 @@ const CustomTable = ({ data, titles, editHandler, deleteHandler }) => {
 				{data.map((item) => (
 					<StyledCustomRow key={item.id}>
 						{Object.keys(item).map((key) => {
-							if (key !== "role") {
+							if (key !== "role" && key !== "deletedAt") {
 								if (key === "createdAt" || key === "updatedAt") {
 									return (
 										<div key={key}>

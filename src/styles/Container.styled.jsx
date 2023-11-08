@@ -48,6 +48,15 @@ export const StyledManagePage = styled.div`
 		display: flex;
 		justify-content: space-between;
 	}
+
+	h5 {
+		margin-top: 3em;
+	}
+
+	p,
+	h4 {
+		background: #ffffff;
+	}
 `;
 
 export const StyledSmallModal = styled.div`
@@ -82,5 +91,41 @@ export const StyledSmallModal = styled.div`
 			height: 40px;
 			margin: 0;
 		}
+	}
+`;
+
+export const StyledAdminPage = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.main-container {
+		display: flex;
+		flex-direction: row;
+		width: 100vw;
+		justify-content: space-evenly;
+	}
+	p,
+	h4 {
+		background: #ffffff;
+	}
+`;
+
+export const StyledPartContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+
+	.new-container {
+		display: flex;
+		flex-direction: column;
+		width: 20vw;
+		height: ${(props) => (props.long ? "62vh" : "30vh")};
+		border: 1px solid var(--light-grey);
+		border-right: none;
+		background: #ffffff;
+		text-align: center;
+		padding: 2em 1em;
+		justify-content: space-evenly;
 	}
 `;

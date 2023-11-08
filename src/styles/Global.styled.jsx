@@ -37,6 +37,9 @@ a {
   text-decoration: none;
   color: inherit;
 
+  &:hover{
+    cursor: pointer;
+  }
   &:active{
     color: inherit;
   }

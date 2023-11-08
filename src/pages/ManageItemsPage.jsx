@@ -9,6 +9,7 @@ import EditItemModal from "../components/EditItemModal";
 const ManageItemsPage = () => {
 	const { items, setItems, errorMessage, setErrorMessage } =
 		useContext(ItemsContext);
+
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
 	const [selectedItem, setSelectedItem] = useState();
 	const [showEditModal, setShowEditModal] = useState(false);
@@ -17,6 +18,7 @@ const ManageItemsPage = () => {
 		"id",
 		"Title",
 		"Description",
+		"In stock",
 		"Added By",
 		"Updated By",
 		"Created",
@@ -81,7 +83,6 @@ const ManageItemsPage = () => {
 					deleteHandler={deleteItem}
 				/>
 			</div>
-
 			{showDeleteModal && (
 				<DeleteModal
 					setShowDeleteModal={setShowDeleteModal}
