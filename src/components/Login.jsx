@@ -4,7 +4,9 @@ import { StyledInput, StyledInputLabel } from "../styles/Input.styled";
 import axios from "axios";
 import { CurrentUserContext } from "../context/currentUser";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+const validEmail =
+	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export const Login = () => {
 	const { addCurrentUser } = useContext(CurrentUserContext);
@@ -15,10 +17,18 @@ export const Login = () => {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		const { email, password } = e.target;
+		const requestBody = { email: email.value, password: password.value };
+
+		if (!email.value || !password.value) {
+			return setMessage("All fields required");
+		}
+
+		if (!validEmail.test(email.value)) {
+			console.log(validEmail.test(email));
+			return setMessage("Please enter a valid email address");
+		}
 
 		try {
-			const requestBody = { email: email.value, password: password.value };
-
 			const resp = await axios.post(
 				"http://localhost:8080/api/identity/login",
 				requestBody,
@@ -40,7 +50,7 @@ export const Login = () => {
 				await addCurrentUser(user);
 			}
 		} catch (error) {
-			//todo: handle this error
+			setMessage(error.response.data);
 			console.log(error);
 		}
 	};
@@ -50,6 +60,12 @@ export const Login = () => {
 		setIsLoading(true);
 		setMessage("");
 		const { email } = e.target;
+
+		if (!email.value) {
+			setIsLoading(false);
+			return setMessage("All fields required");
+		}
+
 		try {
 			const response = await axios.post(
 				"http://localhost:8080/api/identity/requestResetPassword",
@@ -89,7 +105,7 @@ export const Login = () => {
 					<p onClick={() => setShowRequestPassword(true)}>
 						<b>Forgot Password?</b>
 					</p>
-
+					{message && <p>{message}</p>}
 					<LargeButton type="submit">Log in</LargeButton>
 				</form>
 			)}
