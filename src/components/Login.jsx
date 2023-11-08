@@ -4,10 +4,13 @@ import { StyledInput, StyledInputLabel } from "../styles/Input.styled";
 import axios from "axios";
 import { CurrentUserContext } from "../context/currentUser";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
 	const { addCurrentUser } = useContext(CurrentUserContext);
 	const [showRequestPassword, setShowRequestPassword] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [message, setMessage] = useState("");
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -42,10 +45,27 @@ export const Login = () => {
 		}
 	};
 
-	const handlePassword = (e) => {
+	const handlePassword = async (e) => {
 		e.preventDefault();
+		setIsLoading(true);
+		setMessage("");
 		const { email } = e.target;
-		console.log("REQUEST PASSWORD EMAIL: ", email.value);
+		try {
+			const response = await axios.post(
+				"http://localhost:8080/api/identity/requestResetPassword",
+				{
+					email: email.value,
+				}
+			);
+
+			setMessage(`${response.data}`);
+			setIsLoading(false);
+		} catch (error) {
+			setMessage(
+				"Something went wrong when trying to send an email, try again later"
+			);
+			setIsLoading(false);
+		}
 	};
 
 	return (
@@ -82,7 +102,10 @@ export const Login = () => {
 					<p onClick={() => setShowRequestPassword(false)}>
 						<b>Cancel request</b>
 					</p>
-					<LargeButton type="submit">Send Request</LargeButton>
+					{message && <p>{message}</p>}
+					<LargeButton type="submit" disabled={isLoading}>
+						{isLoading ? "Loading..." : "Send Request"}
+					</LargeButton>
 				</form>
 			)}
 		</StyledLoginSignupWrapper>

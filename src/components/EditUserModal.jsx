@@ -38,7 +38,7 @@ const EditUserModal = ({ setShowEditModal, selectedItem }) => {
 					"You have been logged out and will be redirected to login page"
 				);
 
-				return setTimeout(() => navigate("/login"), 3000);
+				return setTimeout(() => navigate("/"), 3000);
 			}
 
 			setMessage("Something went wrong, try again later");

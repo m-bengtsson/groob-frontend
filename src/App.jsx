@@ -11,6 +11,7 @@ import AdminTemplate from "./pageTemplate/AdminTemplate";
 import UserTemplate from "./pageTemplate/UserTemplate";
 import PublicTemplate from "./pageTemplate/PublicTemplate";
 import NoRoute from "./pages/NoRoute";
+import Reset from "./pages/Reset";
 
 function App() {
 	const { currentUser, isLoading } = useContext(CurrentUserContext);
@@ -40,8 +41,10 @@ function App() {
 				{!currentUser && (
 					<Route path="/" element={<PublicTemplate />}>
 						<Route path="/" element={<LoginPage />} />
+						<Route path="reset" element={<Reset />} />
 					</Route>
 				)}
+
 				<Route path="*" element={<NoRoute />} />
 			</Routes>
 		</div>
