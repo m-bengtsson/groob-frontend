@@ -27,7 +27,10 @@ export const StyledLoginSignupWrapper = styled.div`
 	}
 
 	h1 {
+		font-family: "Fat Inter";
 		margin-bottom: 30px;
+		font-size: 24px;
+		font-weight: 700;
 	}
 `;
 

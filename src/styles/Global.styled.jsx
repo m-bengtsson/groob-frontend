@@ -9,7 +9,17 @@ export const GlobalStyle = createGlobalStyle`
 
 @font-face {
   font-family: "Open Sans";
-  src: url(https://fonts.gstatic.com/s/opensans/v36/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVI.woff2) format('woff2');;
+  src: url(https://fonts.gstatic.com/s/opensans/v36/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVI.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: "Fat Inter";
+  src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZ9hiA.woff2) format('woff2');
 }
 
 :root{
@@ -19,16 +29,15 @@ export const GlobalStyle = createGlobalStyle`
   --superlight-grey: #f8f8f8;
   --primary: #C99C99;
 
-  --error-background: #f9e7f1;
-	--error-text: #a82564;
-	--error-border: #d01c71;
+  --error-background: #E7C2C0;
+	--error-text: #762A2A;
 }
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans";
+  font-family: "Inter";
   color: var(--black);
   background-color: var(--superlight-grey);
 }
