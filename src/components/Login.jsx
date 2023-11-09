@@ -4,6 +4,7 @@ import { StyledInput, StyledInputLabel } from "../styles/Input.styled";
 import axios from "axios";
 import { CurrentUserContext } from "../context/currentUser";
 import { useContext, useState } from "react";
+import ErrorMessage from "./ErrorMessage";
 
 const validEmail =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -12,19 +13,22 @@ export const Login = () => {
 	const { addCurrentUser } = useContext(CurrentUserContext);
 	const [showRequestPassword, setShowRequestPassword] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
 	const [message, setMessage] = useState("");
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
+		setErrorMessage("");
+		setErrorMessage();
 		const { email, password } = e.target;
 		const requestBody = { email: email.value, password: password.value };
 
 		if (!email.value || !password.value) {
-			return setMessage("All fields required");
+			return setErrorMessage("All fields required");
 		}
 
 		if (!validEmail.test(email.value)) {
-			return setMessage("Please enter a valid email address");
+			return setErrorMessage("Please enter a valid email address");
 		}
 
 		try {
@@ -49,20 +53,19 @@ export const Login = () => {
 				await addCurrentUser(user);
 			}
 		} catch (error) {
-			setMessage(error.response.data);
-			console.log(error);
+			setErrorMessage(error.response.data);
 		}
 	};
 
 	const handlePassword = async (e) => {
 		e.preventDefault();
 		setIsLoading(true);
-		setMessage("");
+		setErrorMessage("");
 		const { email } = e.target;
 
 		if (!email.value) {
 			setIsLoading(false);
-			return setMessage("All fields required");
+			return setErrorMessage("All fields required");
 		}
 
 		try {
@@ -76,7 +79,7 @@ export const Login = () => {
 			setMessage(`${response.data}`);
 			setIsLoading(false);
 		} catch (error) {
-			setMessage(
+			setErrorMessage(
 				"Something went wrong when trying to send an email, try again later"
 			);
 			setIsLoading(false);
@@ -92,7 +95,6 @@ export const Login = () => {
 						<p>Email</p>
 						<StyledInput name="email" type="email" placeholder="Email" />
 					</StyledInputLabel>
-
 					<StyledInputLabel>
 						<p>Password</p>
 						<StyledInput
@@ -104,7 +106,7 @@ export const Login = () => {
 					<p onClick={() => setShowRequestPassword(true)}>
 						<b>Forgot Password?</b>
 					</p>
-					{message && <p>{message}</p>}
+					{errorMessage && <ErrorMessage message={errorMessage} />}
 					<LargeButton type="submit">Log in</LargeButton>
 				</form>
 			)}
@@ -117,6 +119,7 @@ export const Login = () => {
 					<p onClick={() => setShowRequestPassword(false)}>
 						<b>Cancel request</b>
 					</p>
+					{errorMessage && <ErrorMessage message={errorMessage} />}
 					{message && <p>{message}</p>}
 					<LargeButton type="submit" disabled={isLoading}>
 						{isLoading ? "Loading..." : "Send Request"}
