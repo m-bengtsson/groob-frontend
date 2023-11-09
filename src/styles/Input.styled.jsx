@@ -6,7 +6,7 @@ export const StyledInput = styled.input`
 	width: 300px;
 	height: 40px;
 	padding: 0 0.5em;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 700;
 	box-shadow: inset 0 1px 2px #949494;
 
