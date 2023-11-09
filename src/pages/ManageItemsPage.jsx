@@ -47,8 +47,6 @@ const ManageItemsPage = () => {
     }
   }, [items, setErrorMessage, setItems]);
 
-  const addItem = () => {};
-
   const editItem = (item) => {
     if (item.name) {
       setSelectedItem({ title: item.name, id: item.id, role: item.role });

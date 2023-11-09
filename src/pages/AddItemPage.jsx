@@ -24,10 +24,13 @@ const AddItemPage = () => {
     }
   };
   return (
-    <StyledAddItemPage>
-      <ItemForm handleSubmit={handleSubmit} />
-      <div>Item Overview</div>
-    </StyledAddItemPage>
+    <>
+      <h2>Add item</h2>
+      <StyledAddItemPage>
+        <ItemForm handleSubmit={handleSubmit} />
+        <div>Item Overview</div>
+      </StyledAddItemPage>
+    </>
   );
 };
 

@@ -22,6 +22,8 @@ const ItemForm = ({ handleSubmit }) => {
         />
       </StyledInputLabel>
       <StyledButton>Upload Image</StyledButton>
+      <StyledButton>Item preview</StyledButton>
+      <button type="submit">Add item</button>
     </form>
   );
 };
