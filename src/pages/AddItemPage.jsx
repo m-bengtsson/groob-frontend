@@ -1,5 +1,5 @@
 import { StyledAddItemPage } from "../styles/Container.styled";
-import axios from "axios";
+import instance from "../axiosconfig";
 import ItemForm from "../components/ItemForm";
 
 const AddItemPage = () => {
@@ -10,14 +10,11 @@ const AddItemPage = () => {
     const body = {
       title: title.value,
       description: description.value,
-      repeatPassword: itemsInStock.value,
+      numberOfItems: itemsInStock.value,
     };
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/items",
-        body
-      );
+      const response = await instance.post("/items", body);
       console.log("response: ", response);
     } catch (error) {
       console.log(error);
