@@ -68,9 +68,9 @@ export const StyledSmallModal = styled.div`
 	flex-direction: row;
 	background-color: white;
 	width: 450px;
-	height: 150px;
+	/* height: 150px; */
 	border: 2px solid var(--medium-grey);
-	padding: 0.5em;
+	padding: 2em 0.5em;
 	top: 30vh;
 	justify-content: center;
 	align-items: center;
@@ -131,4 +131,14 @@ export const StyledPartContainer = styled.div`
 		padding: 2em 1em;
 		justify-content: space-evenly;
 	}
+`;
+
+export const StyledErrorMessage = styled.div`
+	border: 1px solid var(--error-text);
+	background: var(--error-background);
+	color: var(--error-text);
+	font-size: 12px;
+	font-family: "Fat Inter";
+	padding: 0.5em 1em;
+	margin-top: 5px;
 `;

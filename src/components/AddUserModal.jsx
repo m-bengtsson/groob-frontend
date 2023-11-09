@@ -4,6 +4,7 @@ import { StyledInput } from "../styles/Input.styled";
 import { StyledSmallModal } from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
+import ErrorMessage from "./ErrorMessage";
 
 const validEmail =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -12,21 +13,23 @@ const AddUserModal = ({ setShowAddUser }) => {
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false);
 	const [message, setMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const addUser = async (e) => {
 		e.preventDefault();
 		setIsLoading(true);
+		setErrorMessage("");
 		setMessage("");
 		const email = e.target.email.value;
 
 		if (!email) {
 			setIsLoading(false);
-			return setMessage("All fields required");
+			return setErrorMessage("All fields required");
 		}
 
-		if (!validEmail.test(email.value)) {
+		if (!validEmail.test(email)) {
 			setIsLoading(false);
-			return setMessage("Please enter a valid email address");
+			return setErrorMessage("Please enter a valid email address");
 		}
 
 		try {
@@ -36,33 +39,36 @@ const AddUserModal = ({ setShowAddUser }) => {
 			setIsLoading(false);
 		} catch (error) {
 			if (error.message === "Request failed with status code 401") {
-				setMessage(
+				setErrorMessage(
 					"You have been logged out and will be redirected to login page"
 				);
 
 				return setTimeout(() => navigate("/"), 3000);
 			}
 
-			setMessage(`${error.message}`);
+			setErrorMessage(`${error.response.data}`);
 			setIsLoading(false);
 		}
 	};
 
 	return (
 		<StyledSmallModal>
-			<form onSubmit={addUser}>
-				<label>
-					<StyledInput type="email" name="email" placeholder="Email" />
-				</label>
-				<StyledButton type="submit" disabled={isLoading}>
-					{isLoading ? "Loading..." : "Add"}
-				</StyledButton>
-			</form>
-			{message && <p>{message}</p>}
+			<div>
+				<form onSubmit={addUser}>
+					<label>
+						<StyledInput type="email" name="email" placeholder="Email" />
+					</label>
+					<StyledButton type="submit" disabled={isLoading}>
+						{isLoading ? "Loading..." : "Add"}
+					</StyledButton>
+				</form>
 
-			<button className="close-button" onClick={() => setShowAddUser(false)}>
-				X
-			</button>
+				<button className="close-button" onClick={() => setShowAddUser(false)}>
+					X
+				</button>
+				{errorMessage && <ErrorMessage message={errorMessage} />}
+				{message && <p>{message}</p>}
+			</div>
 		</StyledSmallModal>
 	);
 };
