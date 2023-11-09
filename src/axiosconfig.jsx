@@ -14,10 +14,9 @@ instance.interceptors.request.use((config) => {
 
 instance.interceptors.response.use(
 	async (response) => {
-		if (response.data === "New accesstoken") {
+		if (response.headers.authorization) {
 			localStorage.setItem("accesstoken", response.headers.authorization);
-			response.config.Authorization = response.headers.authorization;
-			return await instance(response.config);
+			return response;
 		}
 		return response;
 	},
@@ -30,13 +29,15 @@ instance.interceptors.response.use(
 		if (status === 401 && !originalRequest._retry) {
 			originalRequest._retry = true;
 			if (
-				message === "No accesstoken provided." ||
+				message === "No tokens provided." ||
 				message === "No refreshtoken provided."
 			) {
 				error.config.withCredentials = true;
+
 				return await instance(error.config);
 			}
 		}
+
 		return Promise.reject(error);
 	}
 );

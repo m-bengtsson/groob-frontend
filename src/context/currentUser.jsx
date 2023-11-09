@@ -20,7 +20,6 @@ export const CurrentUserProvider = ({ children }) => {
 				setIsLoading(false);
 			} catch (error) {
 				setCurrentUser(null);
-				/* navigate("/"); */
 				setIsLoading(false);
 			}
 		};
