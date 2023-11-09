@@ -29,9 +29,8 @@ export const GlobalStyle = createGlobalStyle`
   --superlight-grey: #f8f8f8;
   --primary: #C99C99;
 
-  --error-background: #f9e7f1;
-	--error-text: #a82564;
-	--error-border: #d01c71;
+  --error-background: #E7C2C0;
+	--error-text: #762A2A;
 }
 
 *{
