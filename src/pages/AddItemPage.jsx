@@ -7,6 +7,7 @@ import instance from "../axiosconfig";
 import ItemForm from "../components/ItemForm";
 import { useState } from "react";
 import { LargeButton, SmallButton } from "../styles/Button.styled";
+import SuccessMessage from "../components/SuccessMessage";
 
 const AddItemPage = () => {
   const [formData, setFormData] = useState({
@@ -68,6 +69,7 @@ const AddItemPage = () => {
             Add item
           </LargeButton>
         </StyledAddItemDiv>
+        <SuccessMessage message={"You have added an item!"} />
       </StyledAddItemPage>
     </div>
   );

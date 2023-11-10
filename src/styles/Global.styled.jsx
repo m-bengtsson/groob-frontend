@@ -31,6 +31,9 @@ export const GlobalStyle = createGlobalStyle`
 
   --error-background: #efd5d3;
 	--error-text: #793838;
+
+  --success-background: #c9e1c4;
+	--success-text: #516f46;
 }
 
 *{

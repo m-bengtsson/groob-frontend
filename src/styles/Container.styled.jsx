@@ -202,3 +202,14 @@ export const StyledErrorMessage = styled.div`
   padding: 0.5em 1em;
   margin-top: 5px;
 `;
+
+export const StyledSuccessMessage = styled.div`
+  border: 1px solid var(--success-text);
+  background: var(--success-background);
+  color: var(--success-text);
+  max-width: 300px;
+  font-size: 12px;
+  font-family: "Fat Inter";
+  padding: 0.5em 1em;
+  margin-top: 5px;
+`;
