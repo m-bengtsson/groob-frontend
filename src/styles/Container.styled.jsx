@@ -137,6 +137,7 @@ export const StyledErrorMessage = styled.div`
 	border: 1px solid var(--error-text);
 	background: var(--error-background);
 	color: var(--error-text);
+	max-width: 300px;
 	font-size: 12px;
 	font-family: "Fat Inter";
 	padding: 0.5em 1em;
