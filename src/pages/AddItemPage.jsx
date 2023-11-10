@@ -60,14 +60,14 @@ const AddItemPage = () => {
               <SmallButton>Buy</SmallButton>
             </div>
           </StyledItemPreview>
+          <LargeButton
+            className="submit-item-button"
+            type="submit"
+            form="item-form"
+          >
+            Add item
+          </LargeButton>
         </StyledAddItemDiv>
-        <LargeButton
-          className="submit-item-button"
-          type="submit"
-          form="item-form"
-        >
-          Add item
-        </LargeButton>
       </StyledAddItemPage>
     </div>
   );

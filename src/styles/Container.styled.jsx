@@ -102,30 +102,32 @@ export const StyledAddItemPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   width: 65vw;
+  height: 100%;
 
   h2 {
     position: absolute;
-    top: 30px;
-  }
-
-  .submit-item-button {
-    position: absolute;
-    width: 10em;
-    bottom: 10px;
-    right: 0px;
-    font-family: "Fat Inter";
+    margin-top: 1.5em;
+    z-index: 1;
   }
 `;
 
 export const StyledAddItemDiv = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 15%;
+  justify-content: space-around;
+  gap: 10%;
   width: 100%;
-  height: 90vh;
+  height: 86vh;
+  position: relative;
+
+  .submit-item-button {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    width: 10em;
+    font-family: "Fat Inter";
+  }
 `;
 
 export const StyledItemForm = styled.form`
@@ -133,7 +135,7 @@ export const StyledItemForm = styled.form`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  height: 68vh;
+  height: 60vh;
   width: 350px;
 
   textarea {
@@ -162,7 +164,7 @@ export const StyledItemPreview = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 58vh;
+  height: 55vh;
   width: 350px;
 
   h3 {
@@ -185,7 +187,7 @@ export const StyledItemPreview = styled.div`
   .item-buttons {
     display: flex;
     justify-content: flex-end;
-    gap: 2em;
+    gap: 5%;
     width: 100%;
   }
 `;
