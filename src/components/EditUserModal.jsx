@@ -1,6 +1,6 @@
 import { StyledButton } from "../styles/Button.styled";
 import { useState } from "react";
-import { StyledSmallModal } from "../styles/Container.styled";
+import { StyledEditUserModal, StyledSmallModal } from "../styles/Modal.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -48,45 +48,52 @@ const EditUserModal = ({ setShowEditModal, selectedItem }) => {
 	};
 
 	return (
-		<StyledSmallModal>
-			<p>{message}</p>
-			{!isEdited && (
-				<>
-					<label>
-						Admin
-						<input
-							type="radio"
-							value="admin"
-							name="role"
-							checked={selectedOption === "admin"}
-							onChange={() => setSelectedOption("admin")}
-						/>
-					</label>
-					<label>
-						User
-						<input
-							type="radio"
-							value="user"
-							name="role"
-							checked={selectedOption === "user"}
-							onChange={() => setSelectedOption("user")}
-						/>
-					</label>
-				</>
-			)}
-			{isEdited ? (
-				<StyledButton onClick={() => setShowEditModal(false)}>
-					Close
-				</StyledButton>
-			) : (
-				<StyledButton onClick={EditItem} disabled={isLoading}>
-					{isLoading ? "Loading..." : "Update"}
-				</StyledButton>
-			)}
-			<button className="close-button" onClick={() => setShowEditModal(false)}>
-				X
-			</button>
-		</StyledSmallModal>
+		<StyledEditUserModal>
+			<div>
+				<p>{message}</p>
+				<div>
+					{!isEdited && (
+						<>
+							<label>
+								Admin
+								<input
+									type="radio"
+									value="admin"
+									name="role"
+									checked={selectedOption === "admin"}
+									onChange={() => setSelectedOption("admin")}
+								/>
+							</label>
+							<label>
+								User
+								<input
+									type="radio"
+									value="user"
+									name="role"
+									checked={selectedOption === "user"}
+									onChange={() => setSelectedOption("user")}
+								/>
+							</label>
+						</>
+					)}
+					{isEdited ? (
+						<StyledButton onClick={() => setShowEditModal(false)}>
+							Close
+						</StyledButton>
+					) : (
+						<StyledButton onClick={EditItem} disabled={isLoading}>
+							{isLoading ? "Loading..." : "Update"}
+						</StyledButton>
+					)}
+				</div>
+				<button
+					className="close-button"
+					onClick={() => setShowEditModal(false)}
+				>
+					X
+				</button>
+			</div>
+		</StyledEditUserModal>
 	);
 };
 
