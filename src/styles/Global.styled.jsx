@@ -31,6 +31,9 @@ export const GlobalStyle = createGlobalStyle`
 
   --error-background: #efd5d3;
 	--error-text: #793838;
+
+  --success-background: #c9e1c4;
+	--success-text: #516f46;
 }
 
 *{
@@ -57,9 +60,19 @@ a {
     color: inherit;
   }
 }
+textarea:focus, input:focus{
+    outline: none;
+}
+.page-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88vh;
+  position: relative;
+}
 `;
 
 export const View = styled.div`
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 `;

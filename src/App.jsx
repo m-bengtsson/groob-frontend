@@ -13,6 +13,7 @@ import UserTemplate from "./pageTemplate/UserTemplate";
 import PublicTemplate from "./pageTemplate/PublicTemplate";
 import NoRoute from "./pages/NoRoute";
 import Reset from "./pages/Reset";
+import AddItemPage from "./pages/AddItemPage";
 
 function App() {
   const { currentUser, isLoading } = useContext(CurrentUserContext);
@@ -30,6 +31,7 @@ function App() {
             <Route path="/" element={<AdminPage />} />
             <Route path="manage-users" element={<ManageUsersPage />} />
             <Route path="manage-items" element={<ManageItemsPage />} />
+            <Route path="/manage-items/add-item" element={<AddItemPage />} />
           </Route>
         )}
 
