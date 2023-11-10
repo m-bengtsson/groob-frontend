@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import instance from "../axiosconfig";
 import ItemForm from "../components/ItemForm";
 import SuccessMessage from "../components/SuccessMessage";
@@ -45,6 +45,15 @@ const AddItemPage = () => {
       [name]: value,
     });
   };
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage("");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage]);
 
   return (
     <div className="page-container">
@@ -59,7 +68,6 @@ const AddItemPage = () => {
             <div className="image">Upload Image</div>
             <h3>{formData.title}</h3>
             <p>{formData.description}</p>
-            <p>{formData.itemsInStock}</p>
             <div className="item-buttons">
               <SmallButton>Remind me</SmallButton>
               <SmallButton>Buy</SmallButton>
@@ -72,9 +80,11 @@ const AddItemPage = () => {
           >
             Add item
           </LargeButton>
+          <div className="message">
+            {successMessage && <SuccessMessage message={successMessage} />}
+            {errorMessage && <ErrorMessage message={errorMessage} />}
+          </div>
         </StyledAddItemDiv>
-        {successMessage && <SuccessMessage message={successMessage} />}
-        {errorMessage && <ErrorMessage message={errorMessage} />}
       </StyledAddItemPage>
     </div>
   );

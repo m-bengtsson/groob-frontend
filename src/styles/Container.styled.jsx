@@ -128,6 +128,11 @@ export const StyledAddItemDiv = styled.div`
     width: 10em;
     font-family: "Fat Inter";
   }
+
+  .message {
+    position: absolute;
+    bottom: 0px;
+  }
 `;
 
 export const StyledItemForm = styled.form`
