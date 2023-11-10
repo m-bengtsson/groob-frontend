@@ -103,8 +103,7 @@ export const StyledAddItemPage = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  width: 80vw;
-  padding: 0 1em;
+  width: 65vw;
 
   h2 {
     position: absolute;
@@ -115,17 +114,18 @@ export const StyledAddItemPage = styled.div`
     position: absolute;
     width: 10em;
     bottom: 10px;
-    right: 10px;
+    right: 0px;
+    font-family: "Fat Inter";
   }
 `;
 
 export const StyledAddItemDiv = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10%;
+  justify-content: space-between;
+  gap: 15%;
   width: 100%;
-  height: 80vh;
+  height: 90vh;
 `;
 
 export const StyledItemForm = styled.form`
@@ -133,9 +133,8 @@ export const StyledItemForm = styled.form`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  height: 60vh;
-  width: 400px;
-  padding: 0 1em 0 1em;
+  height: 68vh;
+  width: 350px;
 
   textarea {
     background-color: var(--light-grey);
@@ -163,9 +162,8 @@ export const StyledItemPreview = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 55vh;
+  height: 58vh;
   width: 350px;
-  padding: 1em;
 
   h3 {
     font-family: "Fat Inter";

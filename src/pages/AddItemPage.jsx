@@ -12,7 +12,6 @@ const AddItemPage = () => {
   const [formData, setFormData] = useState({
     title: null,
     description: null,
-    itemsInStock: null,
   });
 
   const handleSubmit = async (e) => {
