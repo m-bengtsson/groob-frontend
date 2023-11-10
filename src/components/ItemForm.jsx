@@ -1,10 +1,11 @@
 import { StyledInput } from "../styles/Input.styled";
 import { StyledInputLabel } from "../styles/Input.styled";
 import { StyledButton } from "../styles/Button.styled";
+import { StyledItemForm } from "../styles/Container.styled";
 
 const ItemForm = ({ handleSubmit, handleInputChange }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledItemForm id="item-form" onSubmit={handleSubmit}>
       <StyledInputLabel>
         <p>Title</p>
         <StyledInput
@@ -16,7 +17,9 @@ const ItemForm = ({ handleSubmit, handleInputChange }) => {
       </StyledInputLabel>
       <StyledInputLabel>
         <p>Description</p>
-        <StyledInput
+        <textarea
+          rows={8}
+          cols={10}
           name="description"
           type="text"
           placeholder="description"
@@ -33,8 +36,7 @@ const ItemForm = ({ handleSubmit, handleInputChange }) => {
         />
       </StyledInputLabel>
       <StyledButton>Upload Image</StyledButton>
-      <button type="submit">Add item</button>
-    </form>
+    </StyledItemForm>
   );
 };
 

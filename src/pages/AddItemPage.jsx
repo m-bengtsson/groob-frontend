@@ -1,7 +1,11 @@
-import { StyledAddItemPage } from "../styles/Container.styled";
+import {
+  StyledAddItemPage,
+  StyledItemPreview,
+} from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import ItemForm from "../components/ItemForm";
 import { useState } from "react";
+import { LargeButton, SmallButton } from "../styles/Button.styled";
 
 const AddItemPage = () => {
   const [formData, setFormData] = useState({
@@ -21,9 +25,10 @@ const AddItemPage = () => {
     };
 
     try {
-      const response = await instance.post("/items", body);
+      await instance.post("/items", body);
       // todo modal or text for successful
     } catch (error) {
+      // todo: errorcontainer here
       console.log(error);
     }
   };
@@ -38,18 +43,29 @@ const AddItemPage = () => {
 
   return (
     <>
-      <h2>Add item</h2>
       <StyledAddItemPage>
+        <h2>Add item</h2>
         <ItemForm
           handleSubmit={handleSubmit}
           handleInputChange={handleInputChange}
         />
-        <div>
-          Item Overview
-          <p>{formData.title}</p>
+        <StyledItemPreview>
+          <div className="image">Upload Image</div>
+          <h3>{formData.title}</h3>
           <p>{formData.description}</p>
           <p>{formData.itemsInStock}</p>
-        </div>
+          <div className="item-buttons">
+            <SmallButton>Remind me</SmallButton>
+            <SmallButton>Buy</SmallButton>
+          </div>
+        </StyledItemPreview>
+        <LargeButton
+          className="submit-item-button"
+          type="submit"
+          form="item-form"
+        >
+          Add item
+        </LargeButton>
       </StyledAddItemPage>
     </>
   );

@@ -57,9 +57,12 @@ a {
     color: inherit;
   }
 }
+textarea:focus, input:focus{
+    outline: none;
+}
 `;
 
 export const View = styled.div`
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 `;

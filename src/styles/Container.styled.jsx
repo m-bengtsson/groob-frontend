@@ -102,8 +102,85 @@ export const StyledAddItemPage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15em;
-  height: 80vh;
+  gap: 8em;
+  height: 85vh;
+  position: relative;
+
+  h2 {
+    position: absolute;
+    top: 30px;
+  }
+
+  .submit-item-button {
+    position: absolute;
+    width: 15em;
+    bottom: 10px;
+    right: 60px;
+  }
+`;
+
+export const StyledItemForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 60vh;
+  width: 400px;
+  padding: 0 1em 0 1em;
+
+  textarea {
+    background-color: var(--light-grey);
+    border: none;
+    width: 100%;
+    padding: 0.5em 0.5em;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: inset 0 1px 2px #949494;
+  }
+  input {
+    width: 100%;
+  }
+  label {
+    width: 100%;
+    margin-bottom: 1.5em;
+  }
+  p {
+    font-family: "Fat Inter";
+    margin-bottom: 0.5em;
+  }
+`;
+
+export const StyledItemPreview = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 55vh;
+  width: 350px;
+  padding: 1em;
+
+  h3 {
+    font-family: "Fat Inter";
+    font-size: 24px;
+  }
+  p {
+    font-size: 14px;
+  }
+  .image {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    height: 30vh;
+    width: 100%;
+  }
+
+  .item-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2em;
+    width: 100%;
+  }
 `;
 
 export const StyledErrorMessage = styled.div`
