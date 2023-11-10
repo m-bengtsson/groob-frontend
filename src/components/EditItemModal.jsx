@@ -1,5 +1,5 @@
 import { StyledButton } from "../styles/Button.styled";
-import { StyledSmallModal } from "../styles/Container.styled";
+import { StyledSmallModal } from "../styles/Modal.styled";
 
 const EditUserModal = ({ setShowEditModal, selectedItem }) => {
 	return (

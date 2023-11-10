@@ -1,7 +1,7 @@
 import { StyledButton } from "../styles/Button.styled";
 import { useState } from "react";
 import { StyledInput } from "../styles/Input.styled";
-import { StyledSmallModal } from "../styles/Container.styled";
+import { StyledSmallModal } from "../styles/Modal.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
@@ -41,7 +41,7 @@ const AddUserModal = ({ setShowAddUser }) => {
 					"You have been logged out and will be redirected to login page"
 				);
 
-				return setTimeout(() => navigate("/"), 3000);
+				return setTimeout(() => navigate("/"), 5000);
 			}
 
 			setErrorMessage(`${error.response.data}`);
