@@ -5,9 +5,7 @@ import { StyledSmallModal } from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
-
-const validEmail =
-	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+import { validateEmail } from "../../functions/validate";
 
 const AddUserModal = ({ setShowAddUser }) => {
 	const navigate = useNavigate();
@@ -27,7 +25,7 @@ const AddUserModal = ({ setShowAddUser }) => {
 			return setErrorMessage("All fields required");
 		}
 
-		if (!validEmail.test(email)) {
+		if (!validateEmail(email)) {
 			setIsLoading(false);
 			return setErrorMessage("Please enter a valid email address");
 		}
