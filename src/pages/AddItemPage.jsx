@@ -1,19 +1,22 @@
+import { useState } from "react";
+import instance from "../axiosconfig";
+import ItemForm from "../components/ItemForm";
+import SuccessMessage from "../components/SuccessMessage";
+import ErrorMessage from "../components/ErrorMessage";
+import { LargeButton, SmallButton } from "../styles/Button.styled";
 import {
   StyledAddItemPage,
   StyledItemPreview,
   StyledAddItemDiv,
 } from "../styles/Container.styled";
-import instance from "../axiosconfig";
-import ItemForm from "../components/ItemForm";
-import { useState } from "react";
-import { LargeButton, SmallButton } from "../styles/Button.styled";
-import SuccessMessage from "../components/SuccessMessage";
 
 const AddItemPage = () => {
   const [formData, setFormData] = useState({
     title: null,
     description: null,
   });
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,10 +30,11 @@ const AddItemPage = () => {
 
     try {
       await instance.post("/items", body);
-      // todo modal or text for successful
+      setSuccessMessage("You added one item!");
+      setErrorMessage("");
     } catch (error) {
-      // todo: errorcontainer here
-      console.log(error);
+      setErrorMessage("Something went wrong");
+      setSuccessMessage("");
     }
   };
 
@@ -69,7 +73,8 @@ const AddItemPage = () => {
             Add item
           </LargeButton>
         </StyledAddItemDiv>
-        <SuccessMessage message={"You have added an item!"} />
+        {successMessage && <SuccessMessage message={successMessage} />}
+        {errorMessage && <ErrorMessage message={errorMessage} />}
       </StyledAddItemPage>
     </div>
   );
