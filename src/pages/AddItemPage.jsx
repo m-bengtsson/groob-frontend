@@ -1,6 +1,7 @@
 import {
   StyledAddItemPage,
   StyledItemPreview,
+  StyledAddItemDiv,
 } from "../styles/Container.styled";
 import instance from "../axiosconfig";
 import ItemForm from "../components/ItemForm";
@@ -42,23 +43,25 @@ const AddItemPage = () => {
   };
 
   return (
-    <>
+    <div className="page-container">
       <StyledAddItemPage>
         <h2>Add item</h2>
-        <ItemForm
-          handleSubmit={handleSubmit}
-          handleInputChange={handleInputChange}
-        />
-        <StyledItemPreview>
-          <div className="image">Upload Image</div>
-          <h3>{formData.title}</h3>
-          <p>{formData.description}</p>
-          <p>{formData.itemsInStock}</p>
-          <div className="item-buttons">
-            <SmallButton>Remind me</SmallButton>
-            <SmallButton>Buy</SmallButton>
-          </div>
-        </StyledItemPreview>
+        <StyledAddItemDiv>
+          <ItemForm
+            handleSubmit={handleSubmit}
+            handleInputChange={handleInputChange}
+          />
+          <StyledItemPreview>
+            <div className="image">Upload Image</div>
+            <h3>{formData.title}</h3>
+            <p>{formData.description}</p>
+            <p>{formData.itemsInStock}</p>
+            <div className="item-buttons">
+              <SmallButton>Remind me</SmallButton>
+              <SmallButton>Buy</SmallButton>
+            </div>
+          </StyledItemPreview>
+        </StyledAddItemDiv>
         <LargeButton
           className="submit-item-button"
           type="submit"
@@ -67,7 +70,7 @@ const AddItemPage = () => {
           Add item
         </LargeButton>
       </StyledAddItemPage>
-    </>
+    </div>
   );
 };
 

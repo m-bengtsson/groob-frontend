@@ -60,6 +60,11 @@ a {
 textarea:focus, input:focus{
     outline: none;
 }
+.page-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 `;
 
 export const View = styled.div`

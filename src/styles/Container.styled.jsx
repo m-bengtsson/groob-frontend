@@ -100,11 +100,11 @@ export const StyledPartContainer = styled.div`
 
 export const StyledAddItemPage = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 8em;
-  height: 85vh;
   position: relative;
+  width: 80vw;
+  padding: 0 1em;
 
   h2 {
     position: absolute;
@@ -113,10 +113,19 @@ export const StyledAddItemPage = styled.div`
 
   .submit-item-button {
     position: absolute;
-    width: 15em;
+    width: 10em;
     bottom: 10px;
-    right: 60px;
+    right: 10px;
   }
+`;
+
+export const StyledAddItemDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  width: 100%;
+  height: 80vh;
 `;
 
 export const StyledItemForm = styled.form`
