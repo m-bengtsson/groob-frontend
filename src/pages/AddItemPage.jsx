@@ -28,13 +28,17 @@ const AddItemPage = () => {
       numberOfItems: itemsInStock.value,
     };
 
+    if (!title.value || !description.value || itemsInStock.value) {
+      setErrorMessage("All fields required.");
+    }
+
     try {
       await instance.post("/items", body);
-      setSuccessMessage("You added one item!");
       setErrorMessage("");
+      setSuccessMessage("You added one item!");
     } catch (error) {
-      setErrorMessage("Something went wrong");
       setSuccessMessage("");
+      setErrorMessage("Failed to add item. Please try again later.");
     }
   };
 
