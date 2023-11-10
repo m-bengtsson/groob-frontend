@@ -1,6 +1,6 @@
 import { StyledButton } from "../styles/Button.styled";
 import { useState } from "react";
-import { StyledSmallModal } from "../styles/Container.styled";
+import { StyledSmallModal } from "../styles/Modal.styled";
 import instance from "../axiosconfig";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
