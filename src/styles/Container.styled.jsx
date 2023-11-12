@@ -197,6 +197,58 @@ export const StyledItemPreview = styled.div`
   }
 `;
 
+export const ItemDetailsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88vh;
+  position: relative;
+  gap: 10%;
+
+  .large-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 400px;
+    height: 65vh;
+  }
+  .image {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    width: 100%;
+    height: 100%;
+  }
+  .item-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5%;
+    width: 100%;
+  }
+  .description-container {
+    * {
+      margin: 0.5em 0;
+    }
+  }
+`;
+
+export const StyledDropdownContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  label {
+    margin: 0.5em 0;
+  }
+  select {
+    height: 2.5em;
+    padding: 0.5em;
+  }
+  select:focus {
+    outline: none;
+  }
+`;
+
 export const StyledErrorMessage = styled.div`
   border: 1px solid var(--error-text);
   background: var(--error-background);

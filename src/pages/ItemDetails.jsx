@@ -2,6 +2,10 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import instance from "../axiosconfig";
 import { SmallButton } from "../styles/Button.styled";
+import {
+  ItemDetailsContainer,
+  StyledDropdownContainer,
+} from "../styles/Container.styled";
 
 const ItemDetails = () => {
   const { id } = useParams();
@@ -24,17 +28,33 @@ const ItemDetails = () => {
   }, [id]);
 
   return (
-    <div>
-      <div>
-        <div>Image</div>
+    <ItemDetailsContainer>
+      <div className="image-wrapper large-container">
+        <div className="image">Image</div>
       </div>
-      <div>
+      <div className="details-wrapper large-container">
         <h3>{fethcedItem?.title}</h3>
-        <p>{fethcedItem?.description}</p>
-        <SmallButton>Remind me</SmallButton>
-        <SmallButton>Buy</SmallButton>
+        <StyledDropdownContainer>
+          <label htmlFor="size">Size</label>
+          <select name="size" id="size">
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+          </select>
+        </StyledDropdownContainer>
+        <div className="item-buttons">
+          <SmallButton>Remind me</SmallButton>
+          <SmallButton>Buy</SmallButton>
+        </div>
+        <div className="description-container">
+          <label>Description</label>
+          <p>{fethcedItem?.description}</p>
+        </div>
       </div>
-    </div>
+    </ItemDetailsContainer>
   );
 };
 
