@@ -203,14 +203,14 @@ export const ItemDetailsContainer = styled.div`
   justify-content: center;
   height: 88vh;
   position: relative;
-  gap: 10%;
+  gap: 15%;
 
   .large-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 400px;
-    height: 65vh;
+    width: 32vw;
+    height: 80vh;
   }
   h3 {
     font-family: "Fat Inter";
@@ -222,7 +222,7 @@ export const ItemDetailsContainer = styled.div`
     align-items: center;
     justify-content: center;
     background-color: lightgray;
-    width: 100%;
+    width: 40vw;
     height: 100%;
   }
   .item-buttons {
@@ -238,6 +238,7 @@ export const ItemDetailsContainer = styled.div`
   }
   .buy-button {
     width: 100%;
+    letter-spacing: 1px;
   }
 `;
 

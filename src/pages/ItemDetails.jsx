@@ -54,7 +54,7 @@ const ItemDetails = () => {
             <option value="XXL">XXL {lowInStock && " (Low in stock)"}</option>
           </select>
           {lowInStock && <p>Low in stock</p>}
-          <LargeButton className="buy-button">Add to bag</LargeButton>
+          <LargeButton className="buy-button">ADD TO BAG</LargeButton>
         </StyledDropdownContainer>
         <div className="description-container">
           <label>Description</label>
