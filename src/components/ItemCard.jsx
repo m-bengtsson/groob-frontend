@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import defaultImage from "../assets/default-image.jpg";
 const HomePage = ({ item }) => {
-  // todo: default bild
+  console.log("item id: ", item.id);
 
   return (
     <div className="card-container">
