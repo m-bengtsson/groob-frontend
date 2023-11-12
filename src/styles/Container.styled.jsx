@@ -212,6 +212,10 @@ export const ItemDetailsContainer = styled.div`
     width: 400px;
     height: 65vh;
   }
+  h3 {
+    font-family: "Fat Inter";
+    margin-bottom: 0.5em;
+  }
   .image {
     display: flex;
     align-self: center;
@@ -232,17 +236,19 @@ export const ItemDetailsContainer = styled.div`
       margin: 0.5em 0;
     }
   }
+  .buy-button {
+    width: 100%;
+  }
 `;
 
 export const StyledDropdownContainer = styled.div`
   display: flex;
   flex-direction: column;
-  label {
-    margin: 0.5em 0;
-  }
+
   select {
     height: 2.5em;
     padding: 0.5em;
+    margin: 0.5em 0;
   }
   select:focus {
     outline: none;

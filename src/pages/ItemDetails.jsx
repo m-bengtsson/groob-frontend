@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import instance from "../axiosconfig";
-import { SmallButton } from "../styles/Button.styled";
+import { LargeButton, SmallButton } from "../styles/Button.styled";
 import {
   ItemDetailsContainer,
   StyledDropdownContainer,
@@ -9,9 +9,9 @@ import {
 
 const ItemDetails = () => {
   const { id } = useParams();
-  const [fethcedItem, setItem] = useState();
+  const [fetchedItem, setItem] = useState();
   const [errorMessage, setErrorMessage] = useState("");
-  // todo: loader
+  const [lowInStock, setLowInStock] = useState(false);
 
   useEffect(() => {
     const getItem = async () => {
@@ -19,7 +19,9 @@ const ItemDetails = () => {
         const response = await instance.get(`items/${id}`);
         const item = await response.data;
         setItem(item);
-        console.log("ITEM: ", item);
+        if (item.numberOfItems <= 3) {
+          setLowInStock(true);
+        }
       } catch (error) {
         setErrorMessage("We could not find what you are looking for");
       }
@@ -27,31 +29,36 @@ const ItemDetails = () => {
     getItem();
   }, [id]);
 
+  if (!fetchedItem) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <ItemDetailsContainer>
       <div className="image-wrapper large-container">
         <div className="image">Image</div>
       </div>
       <div className="details-wrapper large-container">
-        <h3>{fethcedItem?.title}</h3>
+        <div>
+          <h3>{fetchedItem?.title}</h3>
+          <p>1700 sek</p>
+        </div>
         <StyledDropdownContainer>
           <label htmlFor="size">Size</label>
           <select name="size" id="size">
             <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
+            <option value="S">S {lowInStock && " (Low in stock)"}</option>
+            <option value="M">M {lowInStock && " (Low in stock)"}</option>
             <option value="L">L</option>
             <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
+            <option value="XXL">XXL {lowInStock && " (Low in stock)"}</option>
           </select>
+          {lowInStock && <p>Low in stock</p>}
+          <LargeButton className="buy-button">Add to bag</LargeButton>
         </StyledDropdownContainer>
-        <div className="item-buttons">
-          <SmallButton>Remind me</SmallButton>
-          <SmallButton>Buy</SmallButton>
-        </div>
         <div className="description-container">
           <label>Description</label>
-          <p>{fethcedItem?.description}</p>
+          <p>{fetchedItem?.description}</p>
         </div>
       </div>
     </ItemDetailsContainer>
