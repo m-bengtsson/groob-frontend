@@ -14,6 +14,7 @@ import PublicTemplate from "./pageTemplate/PublicTemplate";
 import NoRoute from "./pages/NoRoute";
 import Reset from "./pages/Reset";
 import AddItemPage from "./pages/AddItemPage";
+import ItemDetails from "./pages/ItemDetails";
 
 function App() {
   const { currentUser, isLoading } = useContext(CurrentUserContext);
@@ -38,6 +39,7 @@ function App() {
         {currentUser && currentUser.role === "user" && (
           <Route path="/" element={<UserTemplate />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="item/:id" element={<ItemDetails />} />
           </Route>
         )}
 
