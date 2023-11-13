@@ -66,7 +66,7 @@ const ItemDetails = () => {
           <LargeButton className="buy-button">ADD TO BAG</LargeButton>
         </StyledDropdownContainer>
         <div className="description-container">
-          <label>Description</label>
+          <h5>Description</h5>
           <p>{fetchedItem?.description}</p>
         </div>
       </div>
