@@ -19,6 +19,7 @@ const AdminPage = () => {
 		{
 			id: "123",
 			title: "New item ",
+			price: 2000,
 			description: "description.",
 			numberOfItems: "15",
 			createdBy: "123",
@@ -28,6 +29,7 @@ const AdminPage = () => {
 	const itemTitles = [
 		"id",
 		"Title",
+		"Price",
 		"Description",
 		"Items in stock",
 		"Added By",
