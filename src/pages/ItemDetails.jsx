@@ -6,6 +6,7 @@ import {
   ItemDetailsContainer,
   StyledDropdownContainer,
 } from "../styles/Container.styled";
+import defaultImage from "../assets/default-image.jpg";
 
 const ItemDetails = () => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ const ItemDetails = () => {
   return (
     <ItemDetailsContainer>
       <div className="image-wrapper large-container">
-        <div className="image">Image</div>
+        <img className="image" src={defaultImage} />
       </div>
       <div className="details-wrapper large-container">
         <div>

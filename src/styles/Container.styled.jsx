@@ -188,7 +188,6 @@ export const StyledItemPreview = styled.div`
     height: 30vh;
     width: 100%;
   }
-
   .item-buttons {
     display: flex;
     justify-content: flex-end;
@@ -209,8 +208,8 @@ export const ItemDetailsContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 32vw;
-    height: 80vh;
+    width: 30vw;
+    height: 85vh;
   }
   h3 {
     font-family: "Fat Inter";
@@ -223,7 +222,7 @@ export const ItemDetailsContainer = styled.div`
     justify-content: center;
     background-color: lightgray;
     width: 40vw;
-    height: 100%;
+    height: 85vh;
   }
   .item-buttons {
     display: flex;
