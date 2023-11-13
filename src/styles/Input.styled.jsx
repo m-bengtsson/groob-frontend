@@ -25,3 +25,9 @@ export const StyledInputLabel = styled.label`
 	flex-direction: column;
 	margin: 0.5em 0;
 `;
+
+export const SmallStyledInput = styled(StyledInput)`
+	height: 30px;
+	width: 200px;
+	margin-right: 0;
+`;
