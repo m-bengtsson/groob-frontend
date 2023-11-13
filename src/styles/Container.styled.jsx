@@ -56,9 +56,8 @@ export const StyledManagePage = styled.div`
     margin-top: 3em;
   }
 
-  p,
   h4 {
-    background: #ffffff;
+    background: var(--superlight-grey);
   }
 `;
 
@@ -188,12 +187,82 @@ export const StyledItemPreview = styled.div`
     height: 30vh;
     width: 100%;
   }
-
   .item-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 5%;
     width: 100%;
+  }
+`;
+
+export const ItemDetailsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88vh;
+  position: relative;
+  gap: 15%;
+
+  .large-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30vw;
+    height: 85vh;
+  }
+  h3 {
+    font-family: "Fat Inter";
+    margin-bottom: 0.5em;
+  }
+  .image {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    width: 40vw;
+    height: 85vh;
+  }
+  .item-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5%;
+    width: 100%;
+  }
+  .description-container {
+    * {
+      margin: 0.5em 0;
+    }
+  }
+  .buy-button {
+    width: 100%;
+    letter-spacing: 1px;
+  }
+`;
+
+export const StyledDropdownContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  select {
+    height: 2.5em;
+    padding: 0.5em;
+    margin: 0.5em 0;
+  }
+  select:focus {
+    outline: none;
+  }
+`;
+export const ItemNotFound = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 90vh;
+
+  && > * {
+    margin-bottom: 1em;
   }
 `;
 

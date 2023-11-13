@@ -41,8 +41,21 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter";
+  font-size: 12px;
   color: var(--black);
   background-color: var(--superlight-grey);
+}
+h1{
+  font-size: 28px;
+}
+h2{
+  font-size: 22px;
+}
+h3{
+  font-size: 19px;
+}
+h4{
+  font-size: 16px;
 }
 
 a {
