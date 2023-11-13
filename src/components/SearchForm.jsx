@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { ItemsContext } from "../context/items";
 import axios from "axios";
 import { SmallStyledInput, StyledInputLabel } from "../styles/Input.styled";
-import ErrorMessage from "./ErrorMessage";
 
 const SearchForm = () => {
 	const { setItems } = useContext(ItemsContext);
