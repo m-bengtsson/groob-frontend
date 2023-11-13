@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { ItemsContext } from "../context/items";
 import axios from "axios";
 import { SmallStyledInput, StyledInputLabel } from "../styles/Input.styled";
+import instance from "../axiosconfig";
 
 const SearchForm = () => {
 	const { setItems } = useContext(ItemsContext);
@@ -15,7 +16,7 @@ const SearchForm = () => {
 		searchedItem = searchedItem.split(" ").join("_");
 
 		try {
-			const response = await axios.get(
+			const response = await instance.get(
 				`http://localhost:8080/api/items?title=${searchedItem}`
 			);
 
@@ -25,6 +26,7 @@ const SearchForm = () => {
 
 			setItems(response.data);
 		} catch (error) {
+			console.log(error);
 			return setErrorMessage("Something went wrong, please try again later");
 		}
 	};
