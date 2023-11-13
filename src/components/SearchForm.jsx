@@ -20,13 +20,8 @@ const SearchForm = () => {
 				`http://localhost:8080/api/items?title=${searchedItem}`
 			);
 
-			e.target.item.value = "";
-
 			if (response.data.length === 0) {
-				e.target.item.value = "";
-				return setErrorMessage(
-					`We could not find any items matching "${searchedItem}"`
-				);
+				return setErrorMessage(`No matches for "${searchedItem}"`);
 			}
 
 			setItems(response.data);
@@ -38,13 +33,13 @@ const SearchForm = () => {
 	return (
 		<form onSubmit={searchItem}>
 			<StyledInputLabel>
+				<p className="error">{errorMessage}</p>
 				<SmallStyledInput
 					type="text"
 					name="item"
 					placeholder="Search item..."
 				/>
 			</StyledInputLabel>
-			{errorMessage && <ErrorMessage message={errorMessage} />}
 		</form>
 	);
 };
