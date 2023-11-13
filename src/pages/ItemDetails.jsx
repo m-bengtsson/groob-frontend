@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import instance from "../axiosconfig";
 import { LargeButton, SmallButton } from "../styles/Button.styled";
 import {
   ItemDetailsContainer,
+  ItemNotFound,
   StyledDropdownContainer,
 } from "../styles/Container.styled";
 import defaultImage from "../assets/default-image.jpg";
@@ -30,8 +31,15 @@ const ItemDetails = () => {
     getItem();
   }, [id]);
 
-  if (!fetchedItem) {
-    return <div>Loading...</div>;
+  if (errorMessage) {
+    return (
+      <ItemNotFound>
+        <p>{errorMessage}</p>
+        <Link to={"/"}>
+          <LargeButton>Back to Home</LargeButton>
+        </Link>
+      </ItemNotFound>
+    );
   }
 
   return (

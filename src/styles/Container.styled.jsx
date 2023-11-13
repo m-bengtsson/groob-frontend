@@ -56,9 +56,8 @@ export const StyledManagePage = styled.div`
     margin-top: 3em;
   }
 
-  p,
   h4 {
-    background: #ffffff;
+    background: var(--superlight-grey);
   }
 `;
 
@@ -252,6 +251,18 @@ export const StyledDropdownContainer = styled.div`
   }
   select:focus {
     outline: none;
+  }
+`;
+export const ItemNotFound = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 90vh;
+
+  && > * {
+    margin-bottom: 1em;
   }
 `;
 

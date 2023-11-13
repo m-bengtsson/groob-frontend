@@ -11,7 +11,10 @@ export const StyledNavbar = styled.div`
   font-size: 14px;
 
   div {
-    gap: 1.5em;
+    gap: 2em;
+  }
+  p:hover {
+    cursor: pointer;
   }
 `;
 
