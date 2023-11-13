@@ -24,4 +24,16 @@ export const StyledInputLabel = styled.label`
 	display: flex;
 	flex-direction: column;
 	margin: 0.5em 0;
+
+	.error {
+		position: absolute;
+		top: 5px;
+		color: var(--error-text);
+	}
+`;
+
+export const SmallStyledInput = styled(StyledInput)`
+	height: 30px;
+	width: 200px;
+	margin-right: 0;
 `;

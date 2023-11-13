@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { View } from "../styles/Global.styled";
 import { StyledNavbar, Logo } from "../styles/Navbar.styled";
 import NavIcons from "./NavIcons";
 import { CurrentUserContext } from "../context/currentUser";
-import { Link } from "react-router-dom";
+import SearchForm from "./SearchForm";
 
 const Navbar = () => {
 	const { removeCurrentUser, currentUser } = useContext(CurrentUserContext);
+	const [showSearch, setShowSearch] = useState(false);
 
 	const handleLogout = async () => {
 		try {
@@ -36,8 +38,11 @@ const Navbar = () => {
 				<p>Men</p>
 				<p>Accessories</p>
 			</View>
-			{currentUser && <p onClick={handleLogout}>Logout</p>}
-			<NavIcons />
+			<View className={"icons-search"}>
+				{showSearch && <SearchForm />}
+				<NavIcons setShowSearch={setShowSearch} showSearch={showSearch} />
+				{currentUser && <p onClick={handleLogout}>Logout</p>}
+			</View>
 		</StyledNavbar>
 	);
 };
