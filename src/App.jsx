@@ -45,7 +45,8 @@ function App() {
 
         {!currentUser && (
           <Route path="/" element={<PublicTemplate />}>
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="reset" element={<Reset />} />
             <Route path="signup" element={<SignupPage />} />
           </Route>

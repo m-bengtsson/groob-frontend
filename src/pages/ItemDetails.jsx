@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import instance from "../axiosconfig";
-import { LargeButton, SmallButton } from "../styles/Button.styled";
+import { LargeButton } from "../styles/Button.styled";
 import {
   ItemDetailsContainer,
   ItemNotFound,
@@ -50,17 +50,17 @@ const ItemDetails = () => {
       <div className="details-wrapper large-container">
         <div>
           <h3>{fetchedItem?.title}</h3>
-          <p>1700 sek</p>
+          <p>{fetchedItem?.price} sek</p>
         </div>
         <StyledDropdownContainer>
           <label htmlFor="size">Size</label>
           <select name="size" id="size">
             <option value="XS">XS</option>
-            <option value="S">S {lowInStock && " (Low in stock)"}</option>
-            <option value="M">M {lowInStock && " (Low in stock)"}</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
             <option value="L">L</option>
             <option value="XL">XL</option>
-            <option value="XXL">XXL {lowInStock && " (Low in stock)"}</option>
+            <option value="XXL">XXL</option>
           </select>
           {lowInStock && <p>Low in stock</p>}
           <LargeButton className="buy-button">ADD TO BAG</LargeButton>
