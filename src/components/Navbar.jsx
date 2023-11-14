@@ -45,6 +45,11 @@ const Navbar = () => {
         {showSearch && <SearchForm />}
         <NavIcons setShowSearch={setShowSearch} showSearch={showSearch} />
         {currentUser && <p onClick={handleLogout}>Logout</p>}
+        {!currentUser && (
+          <Link to={"/login"}>
+            <p>Login</p>
+          </Link>
+        )}
       </View>
     </StyledNavbar>
   );
