@@ -5,17 +5,50 @@ import { ItemsContext } from "../context/items";
 import ItemCard from "../components/ItemCard";
 import instance from "../axiosconfig";
 import { CurrentUserContext } from "../context/currentUser";
+import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
 
 const HomePage = () => {
+	const [searchParams] = useSearchParams();
+	const searchedWord = searchParams.get("search");
+	const [foundWord, setFoundWord] = useState("");
 	const { items, setItems, errorMessage, setErrorMessage } =
 		useContext(ItemsContext);
 	const { currentUser } = useContext(CurrentUserContext);
 
-	//console.log("current user: ", currentUser);
-
 	useEffect(() => {
 		setErrorMessage("");
-		if (items.length === 0) {
+		setFoundWord("");
+
+		if (searchParams.size !== 0) {
+			const searchItem = async () => {
+				setErrorMessage("");
+				let url;
+				if (currentUser) {
+					url = `http://localhost:8080/api/items?title=${searchedWord}`;
+				} else {
+					url = `http://localhost:8080/api/items/public?title=${searchedWord}`;
+				}
+				try {
+					const response = await instance.get(url);
+
+					if (response.data.length === 0) {
+						setFoundWord("");
+						return setErrorMessage(`No matches for "${searchedWord}."`);
+					}
+					setFoundWord(searchedWord);
+					setItems(response.data);
+				} catch (error) {
+					console.log(error);
+					return setErrorMessage(
+						"Something went wrong, please try again later"
+					);
+				}
+			};
+			searchItem();
+		}
+
+		if (searchParams.size === 0 || items.length === 0) {
 			const getItems = async () => {
 				try {
 					if (!currentUser) {
@@ -34,48 +67,14 @@ const HomePage = () => {
 			};
 			getItems();
 		}
-	}, [items, setErrorMessage, setItems, currentUser]);
-
-	useEffect(() => {
-		setErrorMessage("");
-		if (searchParams) {
-			const searchItem = async () => {
-				setErrorMessage("");
-				try {
-					const response = await instance.get(
-						`http://localhost:8080/api/items?title=${searchedWord}`
-					);
-
-					if (response.data.length === 0) {
-						return setErrorMessage(`No matches for "${searchedWord}"`);
-					}
-
-					setItems(response.data);
-				} catch (error) {
-					console.log(error);
-					return setErrorMessage(
-						"Something went wrong, please try again later"
-					);
-				}
-			};
-			searchItem();
-		}
-
-		if (items.length === 0) {
-			const getItems = async () => {
-				try {
-					const response = await instance.get("/items");
-					const items = response.data;
-					setItems(items);
-				} catch (error) {
-					if (error.response.status === 404) {
-						setErrorMessage("Oh no! We could not fetch the items :'(");
-					}
-				}
-			};
-			getItems();
-		}
-	}, [searchedWord]);
+	}, [
+		items.length,
+		currentUser,
+		setErrorMessage,
+		searchParams,
+		searchedWord,
+		setItems,
+	]);
 
 	if (!items) {
 		return <div>Loading...</div>;
@@ -83,9 +82,12 @@ const HomePage = () => {
 
 	return (
 		<UserHomeContainer>
-			{!searchedWord && <img className="image" src={largeImage} />}
-			{searchedWord && <p>Searched for {searchedWord}</p>}
-			{errorMessage && <p>{errorMessage}</p>}
+			{!foundWord && !searchedWord ? (
+				<img className="image" src={largeImage} />
+			) : (
+				<p>Searched for {foundWord}</p>
+			)}
+			{foundWord && <p>{errorMessage}</p>}
 			<div className="cards-wrapper">
 				{items?.map((item) => (
 					<ItemCard key={item.id} item={item} />
