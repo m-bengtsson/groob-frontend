@@ -14,6 +14,9 @@ export const UserHomeContainer = styled.div`
 		object-fit: cover;
 		overflow: hidden;
 	}
+	.image {
+		margin-bottom: -100px;
+	}
 	.cards-wrapper {
 		display: flex;
 		width: 100%;
