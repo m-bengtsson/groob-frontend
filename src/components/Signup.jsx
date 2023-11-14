@@ -31,7 +31,7 @@ export const Signup = () => {
         }
       );
       if (response.status === 200) {
-        navigate("/");
+        navigate("/login");
       }
     } catch (error) {
       setErrorMessage("Oops! something went wrong with the signup");
@@ -63,7 +63,7 @@ export const Signup = () => {
         </StyledInputLabel>
         <p>
           Already have an account?{" "}
-          <Link to="/">
+          <Link to="/login">
             <b>Log in here.</b>
           </Link>
         </p>
