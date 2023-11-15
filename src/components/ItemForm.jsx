@@ -27,6 +27,15 @@ const ItemForm = ({ handleSubmit, handleInputChange }) => {
         />
       </StyledInputLabel>
       <StyledInputLabel>
+        <p>Price</p>
+        <StyledInput
+          name="price"
+          type="number"
+          placeholder="Number of items"
+          onChange={handleInputChange}
+        />
+      </StyledInputLabel>
+      <StyledInputLabel>
         <p>Items in stock</p>
         <StyledInput
           name="itemsInStock"
