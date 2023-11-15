@@ -22,12 +22,9 @@ const RequestPassword = ({ setShowRequestPassword }) => {
 		}
 
 		try {
-			const response = await axios.post(
-				"http://localhost:8080/api/identity/requestResetPassword",
-				{
-					email,
-				}
-			);
+			const response = await axios.post("/identity/requestResetPassword", {
+				email,
+			});
 
 			setMessage(`${response.data}`);
 			setIsLoading(false);

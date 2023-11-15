@@ -27,9 +27,9 @@ const HomePage = () => {
 				setErrorMessage("");
 				let url;
 				if (currentUser) {
-					url = `http://localhost:8080/api/items?title=${searchedWord}`;
+					url = `/items?title=${searchedWord}`;
 				} else {
-					url = `http://localhost:8080/api/items/public?title=${searchedWord}`;
+					url = `/items/public?title=${searchedWord}`;
 				}
 				try {
 					const response = await instance.get(url);

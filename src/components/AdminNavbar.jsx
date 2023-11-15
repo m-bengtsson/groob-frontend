@@ -13,7 +13,7 @@ const AdminNavbar = () => {
 	const handleLogout = async () => {
 		try {
 			await axios.post(
-				"http://localhost:8080/api/identity/logout",
+				"/identity/logout",
 				{
 					id: currentUser.id,
 				},
