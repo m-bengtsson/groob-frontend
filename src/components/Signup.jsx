@@ -17,6 +17,7 @@ export const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const { name, password, rePassword } = e.target;
+		setErrorMessage("");
 
 		if (!name.value || !password.value || !rePassword.value) {
 			return setErrorMessage("All fields required");

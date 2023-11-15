@@ -7,8 +7,12 @@ import photo from "../assets/square-large-photo.jpg";
 import { AuthPhotoWrapper } from "../styles/Container.styled";
 import { StyledLoginSignupWrapper } from "../styles/Container.styled";
 
+import { validatePassword } from "../../functions/validate";
+import ErrorMessage from "../components/ErrorMessage";
+
 const Reset = () => {
 	const [searchParams] = useSearchParams();
+	const [errorMessage, setErrorMessage] = useState("");
 	const [message, setMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const token = searchParams.get("token_key");
@@ -16,8 +20,25 @@ const Reset = () => {
 	const changePassword = async (e) => {
 		e.preventDefault();
 		setIsLoading(true);
+		setErrorMessage("");
+
 		const password = e.target.password.value;
 		const repeatPassword = e.target.repeatPassword.value;
+
+		if (!password || !password) {
+			setIsLoading(false);
+			return setErrorMessage("All fields required");
+		}
+
+		if (!validatePassword(password)) {
+			setIsLoading(false);
+			return setErrorMessage("Password too weak");
+		}
+
+		if (password !== repeatPassword) {
+			setIsLoading(false);
+			return setErrorMessage("Passwords do not match");
+		}
 
 		try {
 			await axios.patch(
@@ -61,6 +82,7 @@ const Reset = () => {
 						/>
 					</StyledInputLabel>
 					{message && <p>{message}</p>}
+					{errorMessage && <ErrorMessage message={errorMessage} />}
 					<LargeButton type="submit" disabled={isLoading}>
 						{isLoading ? "Loading..." : "Change Password"}
 					</LargeButton>
