@@ -77,8 +77,14 @@ const AddItemPage = () => {
           />
           <StyledItemPreview>
             <div className="image">Upload Image</div>
-            <h3>{formData.title}</h3>
-            <p>{formData.description}</p>
+            <div>
+              <h3>{formData.title}</h3>
+              <p>{formData.price} sek</p>
+            </div>
+            <div>
+              <p className="bold">Description</p>
+              <p>{formData.description}</p>
+            </div>
             <div className="item-buttons">
               <SmallButton>Remind me</SmallButton>
               <SmallButton>Buy</SmallButton>
