@@ -14,21 +14,28 @@ const AddItemPage = () => {
   const [formData, setFormData] = useState({
     title: null,
     description: null,
+    price: null,
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, description, itemsInStock } = e.target;
+    const { title, description, price, itemsInStock } = e.target;
 
     const body = {
       title: title.value,
       description: description.value,
+      price: price.value,
       numberOfItems: itemsInStock.value,
     };
 
-    if (!title.value || !description.value || itemsInStock.value) {
+    if (
+      !title.value ||
+      !description.value ||
+      price.value ||
+      itemsInStock.value
+    ) {
       setErrorMessage("All fields required.");
     }
 
