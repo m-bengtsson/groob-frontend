@@ -45,8 +45,15 @@ const AdminNavbar = () => {
 					</View>
 				</Link>
 			</View>
-			<p onClick={handleLogout}>Logout</p>
-			<VscAccount size={22} />
+			<View className={"icons-search"}>
+				<VscAccount size={22} />
+				{currentUser && <p onClick={handleLogout}>Logout</p>}
+				{!currentUser && (
+					<Link to={"/login"}>
+						<p>Login</p>
+					</Link>
+				)}
+			</View>
 		</StyledNavbar>
 	);
 };
