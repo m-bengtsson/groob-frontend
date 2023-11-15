@@ -68,6 +68,9 @@ a {
     color: inherit;
   }
 }
+.bold{
+  font-family: "Fat Inter";
+}
 textarea:focus, input:focus{
     outline: none;
 }
@@ -81,6 +84,6 @@ textarea:focus, input:focus{
 `;
 
 export const View = styled.div`
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 `;

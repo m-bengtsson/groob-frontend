@@ -14,21 +14,28 @@ const AddItemPage = () => {
   const [formData, setFormData] = useState({
     title: null,
     description: null,
+    price: null,
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, description, itemsInStock } = e.target;
+    const { title, description, price, itemsInStock } = e.target;
 
     const body = {
       title: title.value,
       description: description.value,
+      price: price.value,
       numberOfItems: itemsInStock.value,
     };
 
-    if (!title.value || !description.value || itemsInStock.value) {
+    if (
+      !title.value ||
+      !description.value ||
+      price.value ||
+      itemsInStock.value
+    ) {
       setErrorMessage("All fields required.");
     }
 
@@ -70,8 +77,14 @@ const AddItemPage = () => {
           />
           <StyledItemPreview>
             <div className="image">Upload Image</div>
-            <h3>{formData.title}</h3>
-            <p>{formData.description}</p>
+            <div>
+              <h3>{formData.title}</h3>
+              <p>{formData.price} sek</p>
+            </div>
+            <div>
+              <p className="bold">Description</p>
+              <p>{formData.description}</p>
+            </div>
             <div className="item-buttons">
               <SmallButton>Remind me</SmallButton>
               <SmallButton>Buy</SmallButton>
