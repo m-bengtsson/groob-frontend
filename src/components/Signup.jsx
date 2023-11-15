@@ -4,6 +4,8 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { LargeButton } from "../styles/Button.styled";
 import { StyledLoginSignupWrapper } from "../styles/Container.styled";
 import { StyledInput, StyledInputLabel } from "../styles/Input.styled";
+import { validatePassword } from "../../functions/validate";
+import ErrorMessage from "./ErrorMessage";
 
 export const Signup = () => {
 	const [errorMessage, setErrorMessage] = useState("");
@@ -15,6 +17,18 @@ export const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const { name, password, rePassword } = e.target;
+
+		if (!name.value || !password.value || !rePassword.value) {
+			return setErrorMessage("All fields required");
+		}
+
+		if (!validatePassword(password.value)) {
+			return setErrorMessage("Password too weak");
+		}
+
+		if (password.value !== rePassword.value) {
+			return setErrorMessage("Passwords do not match");
+		}
 
 		const body = {
 			name: name.value,
@@ -30,14 +44,13 @@ export const Signup = () => {
 				navigate("/login");
 			}
 		} catch (error) {
-			setErrorMessage("Oops! something went wrong with the signup");
+			setErrorMessage(error.response.data);
 		}
 	};
 
 	return (
 		<StyledLoginSignupWrapper>
 			<h1>Sign up</h1>
-			{errorMessage && <p>{errorMessage}</p>}
 			<form onSubmit={handleSubmit}>
 				<StyledInputLabel>
 					<p>Name</p>
@@ -63,7 +76,7 @@ export const Signup = () => {
 						<b>Log in here.</b>
 					</Link>
 				</p>
-
+				{errorMessage && <ErrorMessage message={errorMessage} />}
 				<LargeButton type="submit">Sign up</LargeButton>
 			</form>
 		</StyledLoginSignupWrapper>

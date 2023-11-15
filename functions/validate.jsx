@@ -7,3 +7,12 @@ export const validateEmail = (email) => {
 	}
 	return true;
 };
+
+export const validatePassword = (password) => {
+	const validPassword = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+	if (!validPassword.test(password)) {
+		return false;
+	}
+	return true;
+};
