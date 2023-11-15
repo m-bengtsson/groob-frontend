@@ -15,10 +15,12 @@ const HomePage = () => {
 	const { items, setItems, errorMessage, setErrorMessage } =
 		useContext(ItemsContext);
 	const { currentUser } = useContext(CurrentUserContext);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		setErrorMessage("");
 		setFoundWord("");
+		setIsLoading(true);
 
 		if (searchParams.size !== 0) {
 			const searchItem = async () => {
@@ -38,8 +40,9 @@ const HomePage = () => {
 					}
 					setFoundWord(searchedWord);
 					setItems(response.data);
+					setIsLoading(false);
 				} catch (error) {
-					console.log(error);
+					setIsLoading(false);
 					return setErrorMessage(
 						"Something went wrong, please try again later"
 					);
@@ -59,8 +62,10 @@ const HomePage = () => {
 					const response = await instance.get("/items");
 					const items = response.data;
 					setItems(items);
+					setIsLoading(false);
 				} catch (error) {
 					if (error.response.status === 404) {
+						setIsLoading(false);
 						setErrorMessage("Oh no! We could not fetch the items :'(");
 					}
 				}
@@ -76,7 +81,7 @@ const HomePage = () => {
 		setItems,
 	]);
 
-	if (!items) {
+	if (isLoading) {
 		return <div>Loading...</div>;
 	}
 
@@ -85,7 +90,7 @@ const HomePage = () => {
 			{!foundWord && !searchedWord ? (
 				<img className="image" src={largeImage} />
 			) : (
-				<p>Searched for {foundWord}</p>
+				<h1>Results for &quot;{foundWord}&quot;</h1>
 			)}
 			{foundWord && <p>{errorMessage}</p>}
 			<div className="cards-wrapper">
