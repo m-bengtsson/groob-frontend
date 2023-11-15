@@ -20,7 +20,6 @@ const DeleteModal = ({ setShowDeleteModal, selectedItem, dataType }) => {
 	const DeleteItem = async () => {
 		setIsDeleted(false);
 		setIsLoading(true);
-		setUsers;
 		setMessage(`Are you sure you want to delete ${selectedItem.title}?`);
 
 		try {

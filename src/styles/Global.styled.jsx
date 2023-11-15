@@ -8,11 +8,6 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 @font-face {
-  font-family: "Open Sans";
-  src: url(https://fonts.gstatic.com/s/opensans/v36/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVI.woff2) format('woff2');
-}
-
-@font-face {
   font-family: "Inter";
   src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2) format('woff2');
 }
@@ -86,6 +81,6 @@ textarea:focus, input:focus{
 `;
 
 export const View = styled.div`
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 `;
