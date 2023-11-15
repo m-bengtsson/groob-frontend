@@ -57,6 +57,7 @@ const HomePage = () => {
 					if (!currentUser) {
 						const response = await instance.get("/items/public");
 						const items = response.data;
+						setIsLoading(false);
 						setItems(items);
 					}
 					const response = await instance.get("/items");
