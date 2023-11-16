@@ -32,6 +32,12 @@ export const UserHomeContainer = styled.div`
 		padding: 1em 0.5em 0.5em;
 	}
 
+	.image-div {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+	}
+
 	.default-image {
 		width: 210px;
 		height: 290px;
