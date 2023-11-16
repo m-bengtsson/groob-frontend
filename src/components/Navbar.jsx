@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { View } from "../styles/Global.styled";
 import { StyledNavbar, Logo } from "../styles/Navbar.styled";
 import NavIcons from "./NavIcons";
@@ -12,6 +12,7 @@ const Navbar = () => {
   const { removeCurrentUser, currentUser } = useContext(CurrentUserContext);
   const { setItems } = useContext(ItemsContext);
   const [showSearch, setShowSearch] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
@@ -26,8 +27,7 @@ const Navbar = () => {
       removeCurrentUser();
       setItems([]);
     } catch (error) {
-      //todo: handle this error
-      console.log(error);
+      navigate("error");
     }
   };
 
